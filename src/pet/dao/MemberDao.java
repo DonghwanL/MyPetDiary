@@ -9,6 +9,65 @@ import pet.bean.Member;
 
 public class MemberDao extends SuperDao {
 	
+	public int deleteMember(String id) {
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				int cnt = -999999;
+				Member bean = null;
+
+				try {
+					conn = super.getConnection();
+					conn.setAutoCommit(false); 
+					
+					bean = this.selectDataByID(id);
+					
+					if (conn == null) {conn = super.getConnection();}
+					
+					// 회원 상태 변경
+					String sql = " update member set status = 1 ";
+					sql += " where id = ? ";
+					pstmt = conn.prepareStatement(sql);
+					
+
+					// 회원 탈퇴			
+					sql = " delete from members ";
+					sql += " where id = ?  "; 
+					
+					if(pstmt !=null) {pstmt.close();}
+					
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, id);		
+					
+					cnt = pstmt.executeUpdate();
+					
+					conn.commit(); 
+
+				} catch (Exception e) {
+					SQLException err = (SQLException)e;			
+					cnt = - err.getErrorCode() ;			
+					e.printStackTrace();
+					
+					try {
+						conn.rollback(); 
+						
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+					
+				} finally {
+					try {
+						if(pstmt != null){pstmt.close();}
+						if(conn != null){conn.close();}
+						
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+				}
+				
+				return cnt;
+	}
+	
 	public int modifyData(Member bean) {
 		String sql = " update member set ";
 		sql += " nickname = ?, "; 
@@ -17,7 +76,7 @@ public class MemberDao extends SuperDao {
 		sql += " phone = ?, "; 
 		sql += " zipcode = ?, "; 
 		sql += " address1 = ?, "; 
-		sql += " address2 = ?, "; 
+		sql += " address2 = ? "; 
 		sql += " where id = ? "; 
 		
 		Connection conn = null;
@@ -36,6 +95,7 @@ public class MemberDao extends SuperDao {
 			pstmt.setString(5, bean.getZipcode());
 			pstmt.setString(6, bean.getAddress1());
 			pstmt.setString(7, bean.getAddress2());
+			pstmt.setString(8, bean.getId());
 			
 			cnt = pstmt.executeUpdate(); 
 			conn.commit(); 
@@ -67,7 +127,7 @@ public class MemberDao extends SuperDao {
 	public Member selectDataByID(String id) {
 		Member bean = null;
 		
-		String sql = "select * from members where id = ? ";
+		String sql = "select * from member where id = ? ";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
