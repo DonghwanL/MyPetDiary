@@ -24,6 +24,17 @@ input:focus {
 	border: 3px solid #2368B7;
 }
 
+.zipcode {
+	font-size: 13px;
+	color: #fff;
+	background-color: #2368B7;
+}
+
+.zipcode:hover {
+	outline: none;
+	font-weight: 500;
+}
+
 button {
   font-size: 13px;
   color: #fff;

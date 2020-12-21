@@ -32,37 +32,35 @@ public class MemberModifyController extends SuperClass {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
-		
-				bean = new Member();
+//		
+//				bean = new Member();
+//				
+//				bean.setAddress1(request.getParameter("address1"));
+//				bean.setAddress2(request.getParameter("address2"));
+//				bean.setId(request.getParameter("id"));
+//				bean.setName(request.getParameter("name"));
+//				bean.setPassword(request.getParameter("password"));
+//				bean.setZipcode(request.getParameter("zipcode"));
+//				bean.setNickname(request.getParameter("nickname"));
+//				bean.setEmail(request.getParameter("email"));
+//				bean.setPhone(request.getParameter("phone"));
+//				
+//				String gotopage = "";
 				
-				bean.setAddress1(request.getParameter("address1"));
-				bean.setAddress2(request.getParameter("address2"));
-				bean.setId(request.getParameter("id"));
-				bean.setName(request.getParameter("name"));
-				bean.setPassword(request.getParameter("password"));
-				bean.setZipcode(request.getParameter("zipcode"));
-				bean.setNickname(request.getParameter("nickname"));
-				bean.setEmail(request.getParameter("email"));
-				bean.setPhone(request.getParameter("phone"));
-//				bean.setMpoint(Integer.parseInt(request.getParameter("mpoint")));
-//				bean.setMlevel(Integer.parseInt(request.getParameter("mlevel")));
-				
-				String gotopage = "";
-				
-				if (this.validate(request) == true) { // 유효성 검사 성공
-					MemberDao dao = new MemberDao();
-					int cnt = -99999;
-					cnt = dao.modifyData(bean);
-					
-					new MainController().doGet(request, response);
-					
-				} else { // 유효성 검사 실패
+//				if (this.validate(request) == true) { // 유효성 검사 성공
+//					MemberDao dao = new MemberDao();
+//					int cnt = -99999;
+//					cnt = dao.modifyData(bean);
+//					
+//					new MainController().doGet(request, response);
+//					
+//				} else { // 유효성 검사 실패
 					request.setAttribute("bean", bean);
 					super.doPost(request, response);
 					
-					gotopage = "/member/mModifyForm.jsp";
+					String gotopage = "/member/mModifyForm.jsp";
 					super.goToPage(gotopage);
-				}
+//				}
 	}
 	
 	

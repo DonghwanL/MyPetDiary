@@ -35,9 +35,9 @@
 							<label for="id">ID</label>
 						</th>
 						<td>
-							<input type="text" name="disabled-id" disabled="disabled" size="23" value="${requestScope.bean.mID}">
+							<input type="text" name="disabled-id" disabled="disabled" size="25" value="${requestScope.bean.id}">
 							<input type="hidden" name="id" value="${requestScope.bean.id}">
-	 						<span class="error">${error_id}</span>	
+	 						<span class="error">${errorid}</span>	
 						</td>
 					</tr>	
 						
@@ -46,9 +46,9 @@
 							<label for="name">이름</label>
 						</th>
 						<td>
-							<input type="text" name="disabled-name" disabled="disabled" size="23" value="${requestScope.bean.mName}">
-							<input type="hidden" name="Name" value="${requestScope.bean.mName}">
-							<span class="error">${error_name}</span>
+							<input type="text" name="disabled-name" disabled="disabled" size="25" value="${requestScope.bean.name}">
+							<input type="hidden" name="Name" value="${requestScope.bean.name}">
+							<span class="error">${errorname}</span>
 						</td>
 					</tr>
 					
@@ -57,9 +57,9 @@
 							<label for="nickname">닉네임</label>
 						</th>	
 						<td>
-							<input type="text" name="nickname" size="23" value="${requestScope.bean.mNickname}">&nbsp;&nbsp;
+							<input type="text" name="nickname" size="25" value="${requestScope.bean.nickname}">&nbsp;&nbsp;
 							<button onclick="checkDuplicateID();">중복 검사</button>
-							<span class="error">${error_nickname}</span>
+							<span class="error">${errornickname}</span>
 						</td>
 					</tr>
 					
@@ -68,8 +68,8 @@
 							<label for="passowrd">패스워드</label>
 						</th>	
 						<td>
-							<input type="password" name="password1" size="23">
-							<span class="error">${error_password}</span>
+							<input type="password" name="password1" size="25">
+							<span class="error">${errorpassword}</span>
 						</td>
 					</tr>
 					
@@ -78,8 +78,8 @@
 							<label for="check-password">패스워드 확인</label>
 						</th>	
 						<td>
-							<input type="password" name="password2" size="23">
-							<span class="error">${error_repassword}</span>
+							<input type="password" name="password2" size="25">
+							<span class="error">${errorrepassword}</span>
 						</td>
 					</tr>
 					
@@ -88,8 +88,8 @@
 							<label for="email">E-mail</label>
 						</th>		
 						<td>
-							<input type="email" name="email" size="23">
-							<span class="error">${error_email}</span>
+							<input type="email" name="email" size="25" value="${requestScope.bean.email}">
+							<span class="error">${erroremail}</span>
 						</td>
 					</tr>
 					
@@ -98,8 +98,8 @@
 							<label for="hphone">핸드폰 번호</label>
 						</th>	
 						<td>
-							<input type="tel" name="hphone" size="23">
-							<span class="error">${error_hphone}</span>
+							<input type="tel" name="hphone" size="25" value="${requestScope.bean.phone}">
+							<span class="error">${errorphone}</span>
 						</td>
 					</tr>
 					
@@ -108,32 +108,31 @@
 							<label for="zipcode">우편번호</label>
 						</th>	
 						<td>
-							<input type="text" name="disabled-zipcode" disabled="disabled" size="23" value="${requestScope.bean.mZipcode}">
+							<input type="text" id="zipcode" name="zipcode" size="25" value="${requestScope.bean.zipcode}" readonly>
 							&nbsp;
-							<button onclick="findZipcode();">우편번호 찾기</button>
-							<span class="error">${error_zipcode}</span>
+							<input type="button" class="zipcode" onclick="execPostCode()" value="우편번호 찾기"><br>
+							<span class="error">${errorzipcode}</span>
 						</td>
 					</tr>
 					
 					<tr>	
 						<th>
-							<label for="zipcode">주소</label>
+							<label for="address1">주소</label>
 						</th>	
 						<td>
-							<input type="text" name="disabled-address" disabled="disabled" size="23" value="${requestScope.bean.mAdress1}">
-							<input type="hidden" name="address" value="${requestScope.bean.mAdress1}">
-							<span class="error">${error_address1}</span>
+							<input type="text" id="address1" name="address1" size="25" value="${requestScope.bean.address1}" readonly>
+							<span class="error">${erroraddress1}</span>
 						</td>
 					</tr>
 					
 					<tr>	
 						<th>
-							<label for="zipcode">상세 주소</label>
+							<label for="address2">상세 주소</label>
 						</th>	
 						<td>
-							<input type="text" name="address-detail" size="23" value="${requestScope.bean.mAdress2}">
+							<input type="text" id="address2" name="address2" size="25" value="${requestScope.bean.address2}">
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<span class="error">${error_address2}</span>
+							<span class="error">${erroraddress2}</span>
 						</td>
 					</tr>
 					
@@ -154,5 +153,46 @@
 			</tbody>
 		</table>
 	</form>
+	
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		function execPostCode() {
+	    	new daum.Postcode({
+		       	 oncomplete: function(data) {
+	
+		           var fullRoadAddr = data.roadAddress; // 도로명 주소 변
+		           var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+		           
+		           // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+		           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+		           if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		               extraRoadAddr += data.bname;
+		           }
+		           
+		           // 건물명이 있고, 공동주택일 경우 추가한다.
+		           if(data.buildingName !== '' && data.apartment === 'Y'){
+		              extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		           }
+		           
+		           // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+		           if(extraRoadAddr !== ''){
+		               extraRoadAddr = ' (' + extraRoadAddr + ')';
+		           }
+		           
+		           // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+		           if(fullRoadAddr !== ''){
+		               fullRoadAddr += extraRoadAddr;
+		           }
+		           
+		           // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	               document.getElementById("zipcode").value = data.zonecode;
+	               document.getElementById("address1").value = fullRoadAddr;
+	               
+	               // 커서를 상세주소 필드로 이동한다.
+	               document.getElementById("address2").focus();
+		       }
+	    	}).open();
+		}
+	</script>
 </body>
 </html>
