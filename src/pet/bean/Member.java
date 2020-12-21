@@ -1,123 +1,124 @@
 package pet.bean;
 
 public class Member {
-	private String mID; // ID
-	private String mName; // 이름
-	private String mNickname; // 닉네임
-	private String mPassword; // PASSWORD
-	private String mEmail; // EMAIL
-	private String mPhone; // 핸드폰 번호
-	private String mZipcode; // 우편 번호
-	private String mAddress1; // 주소 1
-	private String mAddress2; // 주소 2
-	private String mDate; // 가입일
-	private int mPoint; // 회원 포인트
-	private int mLevel; // 회원 등급 (기본 1, 우수 2, 특급 3)
-	private int mDrop; // 탈퇴 여부 (기본값 0, 탈퇴시 1)
+	private String id; // ID
+	private String name; // 이름
+	private String nickname; // 닉네임
+	private String password; // PASSWORD
+	private String email; // EMAIL
+	private String phone; // 핸드폰 번호
+	private String zipcode; // 우편 번호
+	private String address1; // 주소 1
+	private String address2; // 주소 2
+	private String created_at; // 가입일
+	private int mpoint; // 회원 포인트
+	private int mlevel; // 회원 등급 (기본 1, 우수 2, 특급 3)
+	private int status; // 탈퇴 여부 (기본값 0, 탈퇴시 1)
 	
 	public Member() {}
 
-	public String getmID() {
-		return mID;
+	public String getId() {
+		return id;
 	}
 
-	public void setmID(String mID) {
-		this.mID = mID;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getmName() {
-		return mName;
+	public String getName() {
+		return name;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getmNickname() {
-		return mNickname;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setmNickname(String mNickname) {
-		this.mNickname = mNickname;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public String getmPassword() {
-		return mPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setmPassword(String mPassword) {
-		this.mPassword = mPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getmEmail() {
-		return mEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setmEmail(String mEmail) {
-		this.mEmail = mEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getmPhone() {
-		return mPhone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getmZipcode() {
-		return mZipcode;
+	public String getZipcode() {
+		return zipcode;
 	}
 
-	public void setmZipcode(String mZipcode) {
-		this.mZipcode = mZipcode;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 
-	public String getmAddress1() {
-		return mAddress1;
+	public String getAddress1() {
+		return address1;
 	}
 
-	public void setmAddress1(String mAddress1) {
-		this.mAddress1 = mAddress1;
+	public void setAddress1(String address1) {
+		this.address1 = address1;
 	}
 
-	public String getmAddress2() {
-		return mAddress2;
+	public String getAddress2() {
+		return address2;
 	}
 
-	public void setmAddress2(String mAddress2) {
-		this.mAddress2 = mAddress2;
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
 
-	public String getmDate() {
-		return mDate;
+	public String getCreated_at() {
+		return created_at;
 	}
 
-	public void setmDate(String mDate) {
-		this.mDate = mDate;
+	public void setCreated_at(String created_at) {
+		this.created_at = created_at;
 	}
 
-	public int getmPoint() {
-		return mPoint;
+	public int getMpoint() {
+		return mpoint;
 	}
 
-	public void setmPoint(int mPoint) {
-		this.mPoint = mPoint;
+	public void setMpoint(int mpoint) {
+		this.mpoint = mpoint;
 	}
 
-	public int getmLevel() {
-		return mLevel;
+	public int getMlevel() {
+		return mlevel;
 	}
 
-	public void setmLevel(int mLevel) {
-		this.mLevel = mLevel;
+	public void setMlevel(int mlevel) {
+		this.mlevel = mlevel;
 	}
 
-	public int getmDrop() {
-		return mDrop;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setmDrop(int mDrop) {
-		this.mDrop = mDrop;
+	public void setStatus(int status) {
+		this.status = status;
 	}
+
 }
