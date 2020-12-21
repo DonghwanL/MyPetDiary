@@ -5,7 +5,9 @@ mLogin=pet.member.MemberLoginController
 mLogout=pet.member.MemberLogOutController
 mSignup=pet.member.MemberSignUpController
 mIDCheck=pet.member.MemberIDCheckController
+mNicknameCheck=pet.member.MemberNickCheckController
 mZipCheck=pet.member.MemberZipCheckController
+
 mModify=pet.member.MemberModifyController
 mDelete=pet.member.MemberDeleteController
 mList=pet.member.MemberListController

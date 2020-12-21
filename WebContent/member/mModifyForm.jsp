@@ -15,12 +15,33 @@
 				return false;
 			}
 		}
+		
+		function modifyCheck() {
+			if (!confirm('회원정보를 수정 하시겠습니까?')) {
+				return false;
+			}
+		}
+		
+		function nicknameCheck() {
+			var nickname = document.modify_form.nickname.value;
+			
+			if (nickname.length == 0) {
+				alert('닉네임을 입력해 주세요.');
+				document.modify_form.nickname.focus(); 
+				return false;
+			}
+			
+			var url = '<%=NoForm%>mNicknameCheck&nickname=' + nickname; 
+			window.open(url, 'checkPopUp', 'height=150, width=300');
+			}
+		}
 	</script>
 </head>
 
 <body>
-		<form name="modify-form" action="<%=YesForm%>" method="POST">
+		<form name="modify_form" action="<%=YesForm%>" method="POST">
 			<input type="hidden" name="command" value="mModify">
+			<input type="hidden" name="isCheck" value="false"> 
 			
 			<table class="modify-table">
 				<thead>
@@ -35,8 +56,7 @@
 							<label for="id">ID</label>
 						</th>
 						<td>
-							<input type="text" name="disabled-id" disabled="disabled" size="25" value="${requestScope.bean.id}">
-							<input type="hidden" name="id" value="${requestScope.bean.id}">
+							<input type="text" name="id" size="25" value="${requestScope.bean.id}" readonly>
 	 						<span class="error">${errorid}</span>	
 						</td>
 					</tr>	
@@ -46,8 +66,7 @@
 							<label for="name">이름</label>
 						</th>
 						<td>
-							<input type="text" name="disabled-name" disabled="disabled" size="25" value="${requestScope.bean.name}">
-							<input type="hidden" name="Name" value="${requestScope.bean.name}">
+							<input type="text" name="name" size="25" value="${requestScope.bean.name}" readonly>
 							<span class="error">${errorname}</span>
 						</td>
 					</tr>
@@ -58,7 +77,7 @@
 						</th>	
 						<td>
 							<input type="text" name="nickname" size="25" value="${requestScope.bean.nickname}">&nbsp;&nbsp;
-							<button onclick="checkDuplicateID();">중복 검사</button>
+							<button onclick="nicknameCheck();">중복 검사</button>
 							<span class="error">${errornickname}</span>
 						</td>
 					</tr>
@@ -98,7 +117,7 @@
 							<label for="hphone">핸드폰 번호</label>
 						</th>	
 						<td>
-							<input type="tel" name="hphone" size="25" value="${requestScope.bean.phone}">
+							<input type="tel" name="phone" size="25" value="${requestScope.bean.phone}">
 							<span class="error">${errorphone}</span>
 						</td>
 					</tr>
@@ -138,14 +157,15 @@
 					
 					<tr>	
 						<td>
-							<p>Point : ${requestScope.bean.mPoint} / 레벨 : ${requestScope.bean.mLevel}&nbsp;</p>
+							<p>Point : ${requestScope.bean.mpoint} / 레벨 : ${requestScope.bean.mlevel}&nbsp;</p>
 						</td>
 					</tr>
 					
 					<tr>
 						<td colspan="2" align="center" class="button-group">
-							<button type="submit">정보 수정</button>&nbsp;&nbsp;
-							<a href="<%=NoForm%>mDelete&id=${sessionScope.loginfo.mID}" onclick="return dropCheck();">
+							<button type="submit" value="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}" onclick="return modifyCheck();">
+								정보 수정</button>&nbsp;&nbsp;
+							<a href="<%=NoForm%>mDelete&id=${sessionScope.loginfo.id}" onclick="return dropCheck();">
 								회원 탈퇴</a>&nbsp;&nbsp;
 							<button type="reset">취소</button>&nbsp;&nbsp;
 						</td>
@@ -160,7 +180,7 @@
 	    	new daum.Postcode({
 		       	 oncomplete: function(data) {
 	
-		           var fullRoadAddr = data.roadAddress; // 도로명 주소 변
+		           var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
 		           var extraRoadAddr = ''; // 도로명 조합형 주소 변수
 		           
 		           // 법정동명이 있을 경우 추가한다. (법정리는 제외)

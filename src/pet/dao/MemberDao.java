@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 import pet.bean.Member;
 
@@ -142,6 +143,60 @@ public class MemberDao extends SuperDao {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) { // 해당 사용자 확인
+				bean = new Member();
+				
+				bean.setAddress1(rs.getString("address1"));
+				bean.setAddress2(rs.getString("address2"));
+				String created_date = String.valueOf(rs.getDate("created_at"));
+				bean.setCreated_at(created_date);
+				bean.setEmail(rs.getString("email"));
+				bean.setId(rs.getString("id"));
+				bean.setMlevel(rs.getInt("mlevel"));
+				bean.setMpoint(rs.getInt("mpoint"));
+				bean.setName(rs.getString("name"));
+				bean.setNickname(rs.getString("nickname"));
+				bean.setPassword(rs.getString("password"));
+				bean.setPhone(rs.getString("phone"));
+				bean.setZipcode(rs.getString("zipcode"));
+			}
+			
+			System.out.println("MDAO : 사용자 정보 추가 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if (rs != null) {rs.close();}
+				if (pstmt != null) {pstmt.close();}
+				if (conn != null) {conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return bean;
+	}
+	
+	public Member selectDataByNick(String nickname) {
+		Member bean = null;
+		
+		String sql = "select * from member where nickname = ? ";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, nickname);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
 				bean = new Member();
 				
 				bean.setAddress1(rs.getString("address1"));

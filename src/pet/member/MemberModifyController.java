@@ -32,21 +32,24 @@ public class MemberModifyController extends SuperClass {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
-//		
-//				bean = new Member();
-//				
-//				bean.setAddress1(request.getParameter("address1"));
-//				bean.setAddress2(request.getParameter("address2"));
-//				bean.setId(request.getParameter("id"));
-//				bean.setName(request.getParameter("name"));
-//				bean.setPassword(request.getParameter("password"));
-//				bean.setZipcode(request.getParameter("zipcode"));
-//				bean.setNickname(request.getParameter("nickname"));
-//				bean.setEmail(request.getParameter("email"));
-//				bean.setPhone(request.getParameter("phone"));
-//				
-//				String gotopage = "";
+		
+				bean = new Member();
 				
+				bean.setAddress1(request.getParameter("address1"));
+				bean.setAddress2(request.getParameter("address2"));
+				bean.setId(request.getParameter("id"));
+				bean.setName(request.getParameter("name"));
+				bean.setPassword(request.getParameter("password"));
+				bean.setZipcode(request.getParameter("zipcode"));
+				bean.setNickname(request.getParameter("nickname"));
+				bean.setEmail(request.getParameter("email"));
+				bean.setPhone(request.getParameter("phone"));
+				
+				System.out.println(bean.getAddress1());
+				System.out.println(bean.getEmail());
+				
+				String gotopage = "";
+//				
 //				if (this.validate(request) == true) { // 유효성 검사 성공
 //					MemberDao dao = new MemberDao();
 //					int cnt = -99999;
@@ -58,9 +61,9 @@ public class MemberModifyController extends SuperClass {
 					request.setAttribute("bean", bean);
 					super.doPost(request, response);
 					
-					String gotopage = "/member/mModifyForm.jsp";
+					gotopage = "/member/mModifyForm.jsp";
 					super.goToPage(gotopage);
-//				}
+//			}
 	}
 	
 	
