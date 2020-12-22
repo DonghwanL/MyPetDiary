@@ -53,8 +53,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<head profile="http://www.w3.org/2005/10/profile">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -67,8 +66,8 @@
         <header>
             <div class="inner clearfix">
                 <div class="menu-group float--left">
-                    <div class="logo">
-                        <a href="#">MyPetDiary :)</a>
+                    <div class="menu-group__logo">
+                        <a href="#">MyPetDiary</a>
                     </div>
                     
                     <ul class="main-menu">
@@ -83,11 +82,11 @@
                             <li class="dropdown-mypage"><a href="#" class="hover-color">My Page</a>
                                 <ul class="dropdown-submenu">
                                 	<li><a href="#">My Diary</a></li>
-                            		<li><a href="<%=NoForm%>mModify&id=${sessionScope.loginfo.mID}">정보 수정</a></li>
+                            		<li><a href="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}">정보 수정</a></li>
                             		<li><a href="#">주문 조회</a></li>
                             		
-                            		<c:if test="${whologin == 2}">
-										<li><a href="<%=NoForm%>#">관리자 메뉴</a></li>
+                            		<c:if test="${login_type == 1}">
+										<li><a href="<%=NoForm%>mList">관리자 메뉴</a></li>
 									</c:if>
                             	</ul>
                             </li>
@@ -103,8 +102,8 @@
 
                 <div class="sign-group float--right">
                     <div class="btn-group">
-                    	<span>님 환영합니다!</span>
-                        <a href="#" class="log-in btn--home">로그인</a>
+                    	<span>${sessionScope.loginfo.nickname}(${sessionScope.loginfo.id})님 환영합니다!</span>
+                        <a href="<%=NoForm%>mLogin" class="log-in btn--home">로그인</a>
                         <a href="#" class="sign-up btn--home">회원가입</a>
                         <a href="#" class="shop-cart">Cart</a>
                     </div>
@@ -115,7 +114,7 @@
         <footer>
              <div class="footer-inner">
                 <div class="copyright">
-                    <p>© 2020. TEAM2 All rights reserved</p>
+                    <p>© 2020 TEAM2 All rights reserved</p>
                 </div>
     
                 <div class="contact">

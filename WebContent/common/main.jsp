@@ -16,14 +16,14 @@
         
         <section>
         	<div class="info"> 
-        		<div class="main-info-images">
-	        		<img alt="info-images1" src="./../images/main_delivery.jpeg">
-	        		<img alt="info-images2" src="./../images/main_discuss.jpeg">
-	        		<img alt="info-images3" src="./../images/main_diary.jpeg">
+        		<div class="info__images">
+	        		<img alt="info-images1" src="./../images/main_delivery.JPG">
+	        		<img alt="info-images2" src="./../images/main_discuss.JPG">
+	        		<img alt="info-images3" src="./../images/main_diary.JPG">
         		</div>
         		
         		
-        		<div class="info-description">
+        		<div class="info__description">
 	        		<p>▪︎ 특별하게 엄선된 상품을 <mark>빠르고 정확하게 배송</mark>해 드립니다.</p>
 	        		<p>▪ 반려동물을 사랑하는 유저와 <mark>자유롭게 소통 하세요</mark></p>
 					<p>▪ 나의 사랑스러운 반려동물 위한 <mark>개인 일기장</mark>을 만나 보세요!</p>	

@@ -33,37 +33,36 @@ public class MemberModifyController extends SuperClass {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
 		
-				bean = new Member();
+		bean = new Member();
 				
-				bean.setAddress1(request.getParameter("address1"));
-				bean.setAddress2(request.getParameter("address2"));
-				bean.setId(request.getParameter("id"));
-				bean.setName(request.getParameter("name"));
-				bean.setPassword(request.getParameter("password"));
-				bean.setZipcode(request.getParameter("zipcode"));
-				bean.setNickname(request.getParameter("nickname"));
-				bean.setEmail(request.getParameter("email"));
-				bean.setPhone(request.getParameter("phone"));
-				
-				System.out.println(bean.getAddress1());
-				System.out.println(bean.getEmail());
-				
-				String gotopage = "";
-//				
-//				if (this.validate(request) == true) { // 유효성 검사 성공
-//					MemberDao dao = new MemberDao();
-//					int cnt = -99999;
-//					cnt = dao.modifyData(bean);
-//					
-//					new MainController().doGet(request, response);
-//					
-//				} else { // 유효성 검사 실패
-					request.setAttribute("bean", bean);
-					super.doPost(request, response);
+		bean.setAddress1(request.getParameter("address1"));
+		bean.setAddress2(request.getParameter("address2"));
+		bean.setId(request.getParameter("id"));
+		bean.setName(request.getParameter("name"));
+		bean.setPassword(request.getParameter("password"));
+		bean.setZipcode(request.getParameter("zipcode"));
+		bean.setNickname(request.getParameter("nickname"));
+		bean.setEmail(request.getParameter("email"));
+		bean.setPhone(request.getParameter("phone"));
+		bean.setAnimal_type(request.getParameter("animal_type"));
+		
+		String gotopage = "";
+			
+		if (this.validate(request) == true) {
+			MemberDao mdao = new MemberDao();
+			
+			int cnt = -99999;
+			cnt = mdao.modifyData(bean);
 					
-					gotopage = "/member/mModifyForm.jsp";
-					super.goToPage(gotopage);
-//			}
+			new MemberModifyController().doGet(request, response);
+					
+		} else {
+			super.doPost(request, response);
+			request.setAttribute("bean", bean);
+			
+			gotopage = "member/mModifyForm.jsp";
+			super.goToPage(gotopage);			
+		}
 	}
 	
 	
@@ -71,53 +70,48 @@ public class MemberModifyController extends SuperClass {
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true;
 		
-		if (bean.getNickname().length() < 4 || bean.getNickname().length() > 10) {
-			request.setAttribute(super.PREFIX + "nickname", "닉네임은 4글자 이상 10글자 이하로 입력 해주세요.");
+		if (bean.getNickname().length() < 2 || bean.getNickname().length() > 10) {
+			request.setAttribute(super.PREFIX + "nickname", "닉네임은 2글자 이상 10글자 이하로 입력 해주세요");
 			isCheck = false; 
 		}
 		
-		if (bean.getPassword().length() < 4 || bean.getPassword().length() > 10) {
-			request.setAttribute(super.PREFIX + "password", "비밀번호는 6자리 이상 10자리 이하로 입력 해주세요.");
+		if (bean.getPassword().length() < 6 || bean.getPassword().length() > 15) {
+			request.setAttribute(super.PREFIX + "password", "비밀번호는 6자리 이상 15자리 이하로 입력 해주세요");
 			isCheck = false;
 		}
+		
 
 		if (bean.getZipcode() == null || bean.getZipcode() == "") {
-			request.setAttribute(super.PREFIX + "zipcode", "우편번호는 필수 사항 입니다.");
+			request.setAttribute(super.PREFIX + "zipcode", "우편번호는 필수 사항 입니다");
 			isCheck = false;
 		}
 		
 		if (bean.getAddress1() == null || bean.getAddress1() == "" ) {
-			request.setAttribute(super.PREFIX + "address1", "주소는 필수 사항 입니다.");
+			request.setAttribute(super.PREFIX + "address2", "주소는 필수 사항 입니다");
 			isCheck = false;
 		}
 		
-		String regex = "/^￦d{2,3}-￦d{3,4}-￦d{4}$/";
+		boolean result = false;
 		
-		if (bean.getPhone() == null) {
-			bean.setPhone("");
-		}
+		String hphone_regex = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
 		
-		boolean result = Pattern.matches(regex, bean.getPhone());
+		result = Pattern.matches(hphone_regex, bean.getPhone());
 		
-		if (result == false ) {
-			request.setAttribute(super.PREFIX + "phone", "핸드폰 번호를 000-0000-0000 형식으로 입력 해주세요.");
+		if (result == false) {
+			request.setAttribute(super.PREFIX + "phone", "휴대폰 번호를 올바른 형식으로 입력 해주세요");
 			isCheck = false;
 		}
 		
-		regex = "/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;\n";
+		String email_regex = "^[_0-9a-zA-Z-]+@[0-9a-zA-Z-]+(.[_0-9a-zA-Z-]+)*$";
+
 		
-		if (bean.getEmail() == null) {
-			bean.setEmail("");
-			}
+		result = Pattern.matches(email_regex, bean.getEmail());
 		
-		result = Pattern.matches(regex, bean.getEmail());
-		
-		if (result == false ) {
-			request.setAttribute(super.PREFIX + "email", "이메일을 형식에 맞춰 입력 해주세요.");
+		if (result == false) {
+			request.setAttribute(super.PREFIX + "email", "이메일을 형식에 맞추어 입력 해주세요");
 			isCheck = false;
 		}
 		
 		return isCheck; 
 	}
-	
 }

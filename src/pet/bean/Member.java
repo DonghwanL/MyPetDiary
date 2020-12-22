@@ -11,6 +11,7 @@ public class Member {
 	private String address1; // 주소 1
 	private String address2; // 주소 2
 	private String created_at; // 가입일
+	private String animal_type; // 반려동물 종류
 	private int mpoint; // 회원 포인트
 	private int mlevel; // 회원 등급 (기본 1, 우수 2, 특급 3)
 	private int status; // 탈퇴 여부 (기본값 0, 탈퇴시 1)
@@ -97,6 +98,14 @@ public class Member {
 		this.created_at = created_at;
 	}
 
+	public String getAnimal_type() {
+		return animal_type;
+	}
+
+	public void setAnimal_type(String animal_type) {
+		this.animal_type = animal_type;
+	}
+
 	public int getMpoint() {
 		return mpoint;
 	}
@@ -120,5 +129,4 @@ public class Member {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
 }

@@ -11,52 +11,51 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/modify_form.css">
 	<script>
 		function dropCheck() {
-			if (!confirm('회원 탈퇴 하시겠습니까?')) {
-				return false;
+				if (!confirm('회원 탈퇴 하시겠습니까?')) {
+					return false;
+				}
 			}
-		}
-		
+				
 		function modifyCheck() {
 			if (!confirm('회원정보를 수정 하시겠습니까?')) {
 				return false;
 			}
 		}
 		
-		function nicknameCheck() {
-			var nickname = document.modify_form.nickname.value;
+		function passwordReCheck() {
 			
-			if (nickname.length == 0) {
-				alert('닉네임을 입력해 주세요.');
-				document.modify_form.nickname.focus(); 
-				return false;
+			if(document.modify_form.password.value == document.modify_form.password_re.value) {
+				document.getElementById("msg").innerText="";
 			}
 			
-			var url = '<%=NoForm%>mNicknameCheck&nickname=' + nickname; 
-			window.open(url, 'checkPopUp', 'height=150, width=300');
+			if(document.modify_form.password.value != document.modify_form.password_re.value) {
+				document.getElementById("msg").innerText="비밀번호가 일치하지 않습니다";
 			}
 		}
-	</script>
+				
+		function nicknameCheck() {
+			var nickname = document.modify_form.nickname.value;
+					
+			var url = '<%=NoForm%>mNicknameCheck&nickname=' + nickname; 
+			window.open(url, 'checkPopUp', 'height=150, width=300');
+		}
+</script>
 </head>
 
 <body>
+	<div class=modify>
 		<form name="modify_form" action="<%=YesForm%>" method="POST">
-			<input type="hidden" name="command" value="mModify">
-			<input type="hidden" name="isCheck" value="false"> 
+		<input type="hidden" name="command" value="mModify">
+		<h1>회원정보 수정</h1>
 			
-			<table class="modify-table">
-				<thead>
-					<tr>
-						<th><h1>회원정보 수정</h1></th>
-					</tr>
-				</thead>
-				
+			<table class="modify__table">
 				<tbody>
 					<tr>
 						<th>
 							<label for="id">ID</label>
 						</th>
 						<td>
-							<input type="text" name="id" size="25" value="${requestScope.bean.id}" readonly>
+							<input type="text" name="id" size="25" value="${requestScope.bean.id}" readonly><br>
 	 						<span class="error">${errorid}</span>	
 						</td>
 					</tr>	
@@ -66,7 +65,7 @@
 							<label for="name">이름</label>
 						</th>
 						<td>
-							<input type="text" name="name" size="25" value="${requestScope.bean.name}" readonly>
+							<input type="text" name="name" size="25" value="${requestScope.bean.name}" readonly><br>
 							<span class="error">${errorname}</span>
 						</td>
 					</tr>
@@ -77,28 +76,28 @@
 						</th>	
 						<td>
 							<input type="text" name="nickname" size="25" value="${requestScope.bean.nickname}">&nbsp;&nbsp;
-							<button onclick="nicknameCheck();">중복 검사</button>
+							<button onclick="nicknameCheck();">중복 검사</button><br>
 							<span class="error">${errornickname}</span>
 						</td>
 					</tr>
 					
 					<tr>	
 						<th>
-							<label for="passowrd">패스워드</label>
+							<label for="password">비밀번호<strong class="require">*</strong></label>
 						</th>	
 						<td>
-							<input type="password" name="password1" size="25">
+							<input type="password" name="password" size="25" placeholder="비밀번호를 입력 해주세요"><br>
 							<span class="error">${errorpassword}</span>
 						</td>
 					</tr>
 					
 					<tr>
 						<th>
-							<label for="check-password">패스워드 확인</label>
+							<label for="check-password">비밀번호 확인<strong class="require">*</strong></label>
 						</th>	
 						<td>
-							<input type="password" name="password2" size="25">
-							<span class="error">${errorrepassword}</span>
+							<input type="password" name="password_re" size="25" placeholder="비밀번호를 한번 더 입력 해주세요" onkeyup="return passwordReCheck()"><br>
+							<span id="msg" class="error">${errorpassword2}</span>
 						</td>
 					</tr>
 					
@@ -107,17 +106,17 @@
 							<label for="email">E-mail</label>
 						</th>		
 						<td>
-							<input type="email" name="email" size="25" value="${requestScope.bean.email}">
+							<input type="email" name="email" size="25" value="${requestScope.bean.email}"><br>
 							<span class="error">${erroremail}</span>
 						</td>
 					</tr>
 					
 					<tr>	
 						<th>
-							<label for="hphone">핸드폰 번호</label>
+							<label for="hphone">휴대폰</label>
 						</th>	
 						<td>
-							<input type="tel" name="phone" size="25" value="${requestScope.bean.phone}">
+							<input type="tel" name="phone" size="25" value="${requestScope.bean.phone}"><br>
 							<span class="error">${errorphone}</span>
 						</td>
 					</tr>
@@ -129,30 +128,40 @@
 						<td>
 							<input type="text" id="zipcode" name="zipcode" size="25" value="${requestScope.bean.zipcode}" readonly>
 							&nbsp;
-							<input type="button" class="zipcode" onclick="execPostCode()" value="우편번호 찾기"><br>
+							<input type="button" onclick="execPostCode()" value="우편번호 찾기"><br>
 							<span class="error">${errorzipcode}</span>
 						</td>
 					</tr>
 					
 					<tr>	
 						<th>
-							<label for="address1">주소</label>
+							<label for="address">주소</label>
 						</th>	
 						<td>
-							<input type="text" id="address1" name="address1" size="25" value="${requestScope.bean.address1}" readonly>
+							<input type="text" id="address1" name="address1" size="25" value="${requestScope.bean.address1}" readonly><br>
 							<span class="error">${erroraddress1}</span>
 						</td>
 					</tr>
 					
 					<tr>	
 						<th>
-							<label for="address2">상세 주소</label>
+							<label for="address-detail">상세 주소</label>
 						</th>	
 						<td>
-							<input type="text" id="address2" name="address2" size="25" value="${requestScope.bean.address2}">
-							&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" id="address2" name="address2" size="25" value="${requestScope.bean.address2}"><br>
 							<span class="error">${erroraddress2}</span>
 						</td>
+					</tr>
+					
+					<tr>
+						<th>
+							<label for="animal-type">반려동물 종류</label>
+						</th>
+						<td class="radio-group">
+							고양이<input type="radio" name="animal_type" value="고양이" checked="checked">
+							강아지<input type="radio" name="animal_type" value="강아지">
+							기타<input type="radio" name="animal_type" value="기타">
+						</td>	
 					</tr>
 					
 					<tr>	
@@ -167,13 +176,13 @@
 								정보 수정</button>&nbsp;&nbsp;
 							<a href="<%=NoForm%>mDelete&id=${sessionScope.loginfo.id}" onclick="return dropCheck();">
 								회원 탈퇴</a>&nbsp;&nbsp;
-							<button type="reset">취소</button>&nbsp;&nbsp;
+							<button type="reset">취&nbsp;&nbsp;소</button>
 						</td>
 					</tr>
 			</tbody>
 		</table>
 	</form>
-	
+</div>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		function execPostCode() {
