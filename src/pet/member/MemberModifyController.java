@@ -52,7 +52,7 @@ public class MemberModifyController extends SuperClass {
 			MemberDao mdao = new MemberDao();
 			
 			int cnt = -99999;
-			cnt = mdao.modifyData(bean);
+			cnt = mdao.modifyMember(bean);
 					
 			new MemberModifyController().doGet(request, response);
 					

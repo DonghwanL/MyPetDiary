@@ -43,14 +43,15 @@ public class MemberLoginController extends SuperClass {
 		} else {
 			MemberDao dao = new MemberDao();
 			
-			Member bean = dao.Login(id, password);
+			Member bean = dao.memberLogin(id, password);
 			
 			String message = "";
 			super.doPost(request, response);
 
 			if(bean == null) {
 				gotopage = "member/mLoginForm.jsp";
-				message = "아이디나 비번이 잘못되었습니다";
+				message = "아이디 혹은 비밀번호가 잘못되었습니다";
+				
 				request.setAttribute("errmsg", message);
 				super.goToPage(gotopage);
 				

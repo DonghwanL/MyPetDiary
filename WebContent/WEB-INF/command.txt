@@ -3,6 +3,8 @@ main=pet.common.MainController
 ## Member Section ####################################################
 mLogin=pet.member.MemberLoginController
 mLogout=pet.member.MemberLogOutController
+mFindId=pet.member.MemberFindIdController
+mFindPassword=pet.member.MemberFindPasswordController
 mSignup=pet.member.MemberSignUpController
 mIDCheck=pet.member.MemberIDCheckController
 mNicknameCheck=pet.member.MemberNickCheckController

@@ -6,13 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Random;
 
 import pet.bean.Member;
 
 public class MemberDao extends SuperDao {
 	
-	public Member Login(String id, String password) {
+	// ---------------- Login / Out Section ----------------
+	
+	public Member memberLogin(String id, String password) {
 		Member bean = null;
 		
 		Connection conn = null;
@@ -54,23 +56,110 @@ public class MemberDao extends SuperDao {
 				bean.setStatus(rs.getInt("status"));
 				
 			}
-			System.out.println("ok");
+			
+			System.out.println("MDAO : 로그인 정보 입력 완료");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		} finally {
 			try {
 				if(rs != null) {rs.close();}
 				if(pstmt != null) {pstmt.close();}
 				if(conn != null) {conn.close();}
+				
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-			
 		}
-		
 		
 		return bean;
 	}
+	
+	public String FindID(String name, String email) {
+		String id = null;
+		
+		String sql = " select * from member where name = ? and ";
+		sql += " email = ? " ;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				id = rs.getString("id");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				if(conn != null) {conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return id;
+	}
+	
+	public String FindPassword(String name, String id, String email) {
+		String password = null;
+		Random rand = new Random();
+		
+		String sql = " select * from member where name = ? and id = ? and email = ? ";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, email);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				password = rs.getString("password");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				if(conn != null) {conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return password;
+	}
+	
+	
+	
+	// ---------------- Modify / Delete Section ----------------
 	
 	public int deleteMember(String id) {
 				Connection conn = null;
@@ -131,7 +220,7 @@ public class MemberDao extends SuperDao {
 				return cnt;
 	}
 	
-	public int modifyData(Member bean) {
+	public int modifyMember(Member bean) {
 		String sql = " update member set ";
 		sql += " nickname = ?, "; 
 		sql += " password = ?, "; 
@@ -191,6 +280,10 @@ public class MemberDao extends SuperDao {
 		return cnt;
 	}
 
+	
+	// ---------------- List / One Member ID, Nickname Load Section ----------------
+	
+	
 	public Member selectDataByID(String id) {
 		Member bean = null;
 		
@@ -227,7 +320,7 @@ public class MemberDao extends SuperDao {
 				bean.setAnimal_type(rs.getString("animal_type"));
 			}
 			
-			System.out.println("MDAO : 사용자 정보 추가 완료");
+			System.out.println("MDAO : ID_ 사용자 정보 추가 완료");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -281,8 +374,8 @@ public class MemberDao extends SuperDao {
 				bean.setZipcode(rs.getString("zipcode"));
 			}
 			
-			System.out.println("MDAO : 사용자 정보 추가 완료");
-			
+			System.out.println("MDAO : 닉네임_ 사용자 정보 추가 완료");
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -299,7 +392,6 @@ public class MemberDao extends SuperDao {
 		
 		return bean;
 	}
-	
 	
 	public List<Member> allMemberList() {
 		Connection conn = null;
@@ -361,4 +453,8 @@ public class MemberDao extends SuperDao {
 		
 		return lists;
 	}
+
+
+
+
 }

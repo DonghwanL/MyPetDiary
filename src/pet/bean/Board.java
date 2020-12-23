@@ -1,9 +1,9 @@
 package pet.bean;
 
 public class Board {
-	private int no; // 글 번호
+	private int no; // 글 번호 (PK)
 	private String board_type; // 게시판 분류 타입 (자유, 사진, 문의)
-	private String writer; // 작성자 
+	private String writer; // 작성자 (FK)
 	private String title; // 글 제목
 	private String content; // 글 내용
 	private String file1; // 파일 1

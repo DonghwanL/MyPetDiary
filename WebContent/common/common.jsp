@@ -73,9 +73,9 @@
                     <ul class="main-menu">
                             <li class="dropdown-board"><a href="#" class="hover-color">Community</a>
                             	<ul class="dropdown-submenu">
-                            		<li><a href="<%=NoForm%>fBList">자유 게시판</a></li>
-                            		<li><a href="#">사진 게시판</a></li>
-                            		<li><a href="#">문의 게시판</a></li>
+                            		<li><a href="<%=NoForm%>FBList">자유 게시판</a></li>
+                            		<li><a href="<%=NoForm%>IBList">사진 게시판</a></li>
+                            		<li><a href="<%=NoForm%>QBList">문의 게시판</a></li>
                             	</ul>
                             </li>
                             
@@ -97,8 +97,25 @@
 
                 <div class="sign-group float--right">
                     <div class="btn-group">
-                    	<span>${sessionScope.loginfo.nickname}(${sessionScope.loginfo.id})님 환영합니다!</span>
-                        <a href="<%=NoForm%>mLogin" class="log-in btn--home">로그인</a>
+                    	<div>
+                   			<c:if test="${empty sessionScope.loginfo}">
+								<span></span>
+							</c:if>
+							<c:if test="${login_type != 0}">
+								<span>${sessionScope.loginfo.nickname}(${sessionScope.loginfo.id})님 환영합니다!</span> 
+							</c:if>
+						</div>
+						
+						<div>
+	                    	<c:if test ="${login_type == 0}"> 
+	                        	<a href="<%=NoForm%>mLogin" class="btn--home">로그인</a>
+	                        </c:if>
+	                        
+	                        <c:if test ="${login_type != 0}"> 
+	                        	<a href="<%=NoForm%>mLogout" class="btn--home">로그아웃</a>
+	                        </c:if>
+                		</div>
+                  
                         <a href="#" class="sign-up btn--home">회원가입</a>
                         <a href="#" class="shop-cart">Cart</a>
                     </div>

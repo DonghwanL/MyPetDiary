@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>MyPetDiary | 자유 게시판</title>
+	<meta charset="UTF-8">
+	<title>MyPetDiary | 자유 게시판</title>
 </head>
 <body>
 
