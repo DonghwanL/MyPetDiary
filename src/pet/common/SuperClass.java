@@ -18,6 +18,7 @@ public class SuperClass implements SuperController, Validator {
 		this.request = request;
 		this.response = response;
 		this.session = request.getSession();
+		
 	}
 	
 	@Override

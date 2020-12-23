@@ -11,8 +11,17 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/modify_form.css">
 	<script>
 		function dropCheck() {
-				if (!confirm('회원 탈퇴 하시겠습니까?')) {
-					return false;
+				
+				var password = document.modify_form.password.value;
+				
+				if (password == "") {
+					alert('비밀번호를 입력 해주세요');
+					document.modify_form.password.focus();
+				} else {
+					if (confirm('회원 탈퇴 하시겠습니까?')) {
+						location.href = "<%=NoForm%>mDelete&id=${sessionScope.loginfo.id}";
+						alert('회원 탈퇴가 완료 되었습니다');
+					}
 				}
 			}
 				
@@ -86,7 +95,7 @@
 							<label for="password">비밀번호<strong class="require">*</strong></label>
 						</th>	
 						<td>
-							<input type="password" name="password" size="25" placeholder="비밀번호를 입력 해주세요"><br>
+							<input type="password" id="password" name="password" size="25" placeholder="비밀번호를 입력 해주세요"><br>
 							<span class="error">${errorpassword}</span>
 						</td>
 					</tr>
@@ -172,9 +181,9 @@
 					
 					<tr>
 						<td colspan="2" align="center" class="button-group">
-							<button type="submit" value="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}" onclick="return modifyCheck();">
+							<button type="submit" value="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}" onclick="return modifyCheck()">
 								정보 수정</button>&nbsp;&nbsp;
-							<a href="<%=NoForm%>mDelete&id=${sessionScope.loginfo.id}" onclick="return dropCheck();">
+							<a href="#" onclick="dropCheck()">
 								회원 탈퇴</a>&nbsp;&nbsp;
 							<button type="reset">취&nbsp;&nbsp;소</button>
 						</td>

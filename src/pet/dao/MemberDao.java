@@ -96,7 +96,7 @@ public class MemberDao extends SuperDao {
 					sql = " delete from member ";
 					sql += " where id = ?  "; 
 					
-					if(pstmt !=null) {pstmt.close();}
+					if(pstmt != null) {pstmt.close();}
 					
 					pstmt = conn.prepareStatement(sql);
 					

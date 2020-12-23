@@ -56,7 +56,7 @@ a {
 }
 
 .btn--home {
-	height: 18px;
+	height: 15px;
 	background: #eee;
 	border-radius: 4px;
 	display: inline-flex;
@@ -121,7 +121,7 @@ header {
   display: block;
   padding: 15px;
   color: #333;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .main-menu .hover-color:hover {
@@ -151,9 +151,7 @@ header {
 	color: #0D337A;
 	font-weight: 500;
 }
-.dropdown-shop:hover .dropdown-submenu {
-	display: block;
-}
+
 .dropdown-board:hover .dropdown-submenu {
 	display: block;
 }
@@ -211,21 +209,8 @@ header {
 	margin-left: 23%;
 }
 
-.info__images img {
-	width: 200px;
-	height: 200px;
-	border-radius: 5px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-.info__images img:hover {
-	opacity: 0.8;
-}
-
-
 .info__description {
-	border-radius: 6px;
+	border-radius: 4px;
 	width: 630px;
 	padding: 20px;
 	text-align: center;
@@ -234,7 +219,7 @@ header {
 
 .info__description p {
 	font-size: 13px;
-	padding: 3px;
+	padding: 7px;
 	color: #3c3c3c;
 }
 

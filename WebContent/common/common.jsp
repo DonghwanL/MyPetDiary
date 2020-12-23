@@ -73,7 +73,7 @@
                     <ul class="main-menu">
                             <li class="dropdown-board"><a href="#" class="hover-color">Community</a>
                             	<ul class="dropdown-submenu">
-                            		<li><a href="#">자유 게시판</a></li>
+                            		<li><a href="<%=NoForm%>fBList">자유 게시판</a></li>
                             		<li><a href="#">사진 게시판</a></li>
                             		<li><a href="#">문의 게시판</a></li>
                             	</ul>
@@ -91,12 +91,7 @@
                             	</ul>
                             </li>
                             
-                            <li class="dropdown-shop"><a href="#" class="hover-color">Shop</a>
-                            	<ul class="dropdown-submenu">
-                            		<li><a href="#">강아지</a></li>
-                            		<li><a href="#">고양이</a></li>
-                            	</ul>
-                           </li>
+                            <li class="shop"><a href="#" class="hover-color">Shop</a></li>
                     </ul>
                 </div>
 

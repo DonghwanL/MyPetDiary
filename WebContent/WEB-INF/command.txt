@@ -1,12 +1,32 @@
 ## Main Section ######################################################
 main=pet.common.MainController
-## Member Section ######################################################
+## Member Section ####################################################
 mLogin=pet.member.MemberLoginController
 mLogout=pet.member.MemberLogOutController
 mSignup=pet.member.MemberSignUpController
 mIDCheck=pet.member.MemberIDCheckController
 mNicknameCheck=pet.member.MemberNickCheckController
-mZipCheck=pet.member.MemberZipCheckController
 mModify=pet.member.MemberModifyController
 mDelete=pet.member.MemberDeleteController
 mList=pet.member.MemberListController
+## Free Board Section  ####################################################
+#FBList=pet.board.free.FBListController
+#FBWrite=pet.board.free.FBWriteController
+#FBDetailView=pet.board.free.FBDetailViewController
+#FBDelete=pet.board.free.FBDeleteController
+#FBModify=pet.board.free.FBModifyController
+#FBReply=pet.board.free.FBReplyController
+## Image Board Section  ####################################################
+#IBList=pet.board.image.IBListController
+#IBWrite=pet.board.image.IBWriteController
+#IBDetailView=pet.board.image.IBDetailViewController
+#IBDelete=pet.board.image.IBDeleteController
+#IBModify=pet.board.image.IBModifyController
+#IBReply=pet.board.image.IBReplyController
+## Inquiry Board Section  ####################################################
+#QBList=pet.board.inquiry.QBListController
+#QBWrite=pet.board.inquiry.QBWriteController
+#QBDetailView=pet.inquiry.image.QBDetailViewController
+#QBDelete=pet.board.inquiry.QBDeleteController
+#QBModify=pet.board.inquiry.QBModifyController
+#QBReply=pet.board.inquiry.QBReplyController

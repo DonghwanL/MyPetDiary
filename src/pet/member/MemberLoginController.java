@@ -48,7 +48,7 @@ public class MemberLoginController extends SuperClass {
 			String message = "";
 			super.doPost(request, response);
 
-			if(bean == null ) {
+			if(bean == null) {
 				gotopage = "member/mLoginForm.jsp";
 				message = "아이디나 비번이 잘못되었습니다";
 				request.setAttribute("errmsg", message);
