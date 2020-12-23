@@ -16,13 +16,14 @@ mList=pet.member.MemberListController
 #FBDelete=pet.board.free.FBDeleteController
 #FBModify=pet.board.free.FBModifyController
 #FBReply=pet.board.free.FBReplyController
+#FBComment=pet.board.free.FBCommentController
 ## Image Board Section  ####################################################
 #IBList=pet.board.image.IBListController
 #IBWrite=pet.board.image.IBWriteController
 #IBDetailView=pet.board.image.IBDetailViewController
 #IBDelete=pet.board.image.IBDeleteController
 #IBModify=pet.board.image.IBModifyController
-#IBReply=pet.board.image.IBReplyController
+#IBComment=pet.board.free.IBCommentController
 ## Inquiry Board Section  ####################################################
 #QBList=pet.board.inquiry.QBListController
 #QBWrite=pet.board.inquiry.QBWriteController
@@ -30,3 +31,4 @@ mList=pet.member.MemberListController
 #QBDelete=pet.board.inquiry.QBDeleteController
 #QBModify=pet.board.inquiry.QBModifyController
 #QBReply=pet.board.inquiry.QBReplyController
+#QBComment=pet.board.free.QBCommentController
