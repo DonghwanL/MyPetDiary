@@ -64,15 +64,15 @@ public class Paging {
 		
 	}
 
-	private String getPagingHtml(String url){ // 페이징 문자열을 만듬
-		String result = "" ;
+	private String getPagingHtml(String url) {
+		String result = "";
 		
 		// add_param 변수 : 검색 관련하여 추가되는 파라미터 리스트
 		String add_param = "&mode=" + mode + "&keyword=" + keyword; 
 		
 		result += "<ul class='pagination" + paginationSize + "'>";
 		
-		if ( pageNumber <= pageCount ) { // 1부터 10페이지까지는 [맨처음]과 [이전]이 없음
+		if (pageNumber <= pageCount) { // 1부터 10페이지까지는 [맨처음]과 [이전]이 없음
 			//result += "맨처음&nbsp;&nbsp;";
 			//result += "이전&nbsp;&nbsp;";		
 			

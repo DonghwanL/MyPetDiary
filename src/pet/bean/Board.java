@@ -18,7 +18,7 @@ public class Board {
 	private String updated_at; // 수정 일자 
 	private String deleted_at; // 삭제 일자
 	
-	private Board() {}
+	public Board() {}
 
 	public int getNo() {
 		return no;

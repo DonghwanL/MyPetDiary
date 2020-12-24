@@ -27,7 +27,7 @@ mList=pet.member.MemberListController
 #IBModify=pet.board.image.IBModifyController
 #IBComment=pet.board.free.IBCommentController
 ## Inquiry Board Section  ####################################################
-#QBList=pet.board.inquiry.QBListController
+QBList=pet.board.inquiry.QBListController
 #QBWrite=pet.board.inquiry.QBWriteController
 #QBDetailView=pet.inquiry.image.QBDetailViewController
 #QBDelete=pet.board.inquiry.QBDeleteController

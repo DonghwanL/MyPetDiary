@@ -32,7 +32,7 @@ public class MemberFindPasswordController extends SuperClass {
 		
 		String password = null;
 		
-		if (this.validate(request)== false) {
+		if (this.validate(request) == false) {
 			String gotopage = "";
 			gotopage = "mFindPasswordForm.jsp";
 			super.goToPage(gotopage);
