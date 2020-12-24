@@ -61,10 +61,10 @@
 
 					<div class="login_append">
 
-						<span class="txt_find"> <a href="<%=NoForm%>mFindId"
-							class="link_find">아이디 </a> / <a href="<%=NoForm%>mFindPassword"
-							class="link_find">비밀번호 찾기 </a>
-						</span>
+						<div class="txt_find"> 
+							<a href="<%=NoForm%>mFindId" class="link_find">아이디</a> / 
+							<a href="<%=NoForm%>mFindPassword" class="link_find">비밀번호 찾기 </a>
+						</div>
 					</div>
 
 				</fieldset>

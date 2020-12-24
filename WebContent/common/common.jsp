@@ -67,7 +67,7 @@
             <div class="inner clearfix">
                 <div class="menu-group float--left">
                     <div class="menu-group__logo">
-                        <a href="#">MyPetDiary</a>
+                        <a href="<%=NoForm%>Main">MyPetDiary</a>
                     </div>
                     
                     <ul class="main-menu">

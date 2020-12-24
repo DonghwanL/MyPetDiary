@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>MyPetDiary | 반려동물인과 함께하는 커뮤니티</title>
+	<meta charset="UTF-8">
+	<title>MyPetDiary | 반려동물인과 함께하는 커뮤니티</title>
 </head>
 <body>
 	<main>
