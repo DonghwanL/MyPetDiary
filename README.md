@@ -1,2 +1,0 @@
-# MyPetDiary
-bit-semi-project

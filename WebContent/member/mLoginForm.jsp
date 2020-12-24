@@ -25,7 +25,7 @@
 					<div class="box_login">
 						<div class="inp_text">
 							<label for="loginId" class="screen_out">아이디</label> <input
-								type="text" id="loginId" name="id" placeholder="아이디"> <span>${errorid}</span>
+								type="text" id="loginId" name="id" placeholder="아이디"><br> <span>${errorid}</span>
 						</div>
 						<div class="inp_text">
 							<label for="loginPw" class="screen_out">비밀번호</label> <input
@@ -34,8 +34,7 @@
 						</div>
 					</div>
 					<button type="submit" class="btn_login">로그인</button>
-					<button type="button" onclick="location.href="
-						''" class="btn_createId">회원가입</button>
+					<button type="button" onclick="location.href='<%=NoForm%>mSignUp'" class="btn_createId">회원가입</button><br><br>
 					<span>${errmsg}</span>
 
 

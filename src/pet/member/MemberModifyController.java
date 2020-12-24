@@ -46,14 +46,19 @@ public class MemberModifyController extends SuperClass {
 		bean.setPhone(request.getParameter("phone"));
 		bean.setAnimal_type(request.getParameter("animal_type"));
 		
+		System.out.println("here1");
+		
 		String gotopage = "";
 			
+		System.out.println("here2");
 		if (this.validate(request) == true) {
 			MemberDao mdao = new MemberDao();
 			
 			int cnt = -99999;
 			cnt = mdao.modifyMember(bean);
 					
+			System.out.println("MDAO : 회원 정보 수정 완료");
+			
 			new MemberModifyController().doGet(request, response);
 					
 		} else {
@@ -91,6 +96,11 @@ public class MemberModifyController extends SuperClass {
 			isCheck = false;
 		}
 		
+		if (bean.getAnimal_type() == null || bean.getAnimal_type() == "") {
+			request.setAttribute( super.PREFIX + "animal",	"반려동물 종류를 선택 해주세요");
+			isCheck = false;
+		}
+		
 		boolean result = false;
 		
 		String hphone_regex = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
@@ -104,7 +114,6 @@ public class MemberModifyController extends SuperClass {
 		
 		String email_regex = "^[_0-9a-zA-Z-]+@[0-9a-zA-Z-]+(.[_0-9a-zA-Z-]+)*$";
 
-		
 		result = Pattern.matches(email_regex, bean.getEmail());
 		
 		if (result == false) {

@@ -12,6 +12,63 @@ import pet.bean.Member;
 
 public class MemberDao extends SuperDao {
 	
+	// ---------------- Sign-Up Section ----------------
+	
+	public int memberSignUp(Member bean) {
+		String sql = " insert into member(id, name, nickname, password, email, phone, zipcode, address1, address2, animal_type, mpoint, mlevel, created_at, status) "; 
+		sql += " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default, default) ";
+		
+		PreparedStatement pstmt = null;
+		int cnt = -99999;
+		try {
+			conn = super.getConnection();
+			conn.setAutoCommit( false );
+			pstmt = super.conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bean.getId());
+			pstmt.setString(2, bean.getName());
+			pstmt.setString(3, bean.getNickname());
+			pstmt.setString(4, bean.getPassword());
+			pstmt.setString(5, bean.getEmail());
+			pstmt.setString(6, bean.getPhone());
+			pstmt.setString(7, bean.getZipcode());
+			pstmt.setString(8, bean.getAddress1());
+			pstmt.setString(9, bean.getAddress2());
+			pstmt.setString(10, bean.getAnimal_type());
+//			pstmt.setInt(11, bean.getMpoint());
+//			pstmt.setInt(12, bean.getMlevel());
+//			pstmt.setString(13, bean.getCreated_at());
+//			pstmt.setInt(14, bean.getStatus());
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if( pstmt != null ) {pstmt.close();}
+				if(conn != null) {conn.close();} 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
+	
+	
 	// ---------------- Login / Out Section ----------------
 	
 	public Member memberLogin(String id, String password) {
@@ -254,7 +311,7 @@ public class MemberDao extends SuperDao {
 			cnt = pstmt.executeUpdate(); 
 			conn.commit(); 
 			
-			System.out.println("MDAO : 회원정보 수정 완료");
+			System.out.println("MDAO : 회원정보 추가 완료");
 
 		} catch (Exception e) {
 			SQLException err = (SQLException)e;			

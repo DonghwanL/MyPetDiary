@@ -12,22 +12,25 @@
 	<script>
 		function dropCheck() {
 				
-				var password = document.modify_form.password.value;
+			var password = document.modify_form.password.value;
 				
-				if (password == "") {
-					alert('비밀번호를 입력 해주세요');
-					document.modify_form.password.focus();
-				} else {
-					if (confirm('회원 탈퇴 하시겠습니까?')) {
-						location.href = "<%=NoForm%>mDelete&id=${sessionScope.loginfo.id}";
-						alert('회원 탈퇴가 완료 되었습니다');
-					}
+			if (password == "") {
+				alert('비밀번호를 입력 해주세요');
+				document.modify_form.password.focus();
+				
+			} else {
+				if (confirm('회원 탈퇴 하시겠습니까?')) {
+					location.href = "<%=NoForm%>mDelete&id=${sessionScope.loginfo.id}";
+					alert('회원 탈퇴가 완료 되었습니다');
 				}
 			}
+		}
 				
 		function modifyCheck() {
-			if (!confirm('회원정보를 수정 하시겠습니까?')) {
-				return false;
+			if (confirm('회원정보를 수정 하시겠습니까?')) {
+				
+				location.href = "<%=NoForm%>mModify&id=${sessionScope.loginfo.id}";
+				alert('회원정보 수정이 완료 되었습니다');
 			}
 		}
 		
@@ -44,6 +47,12 @@
 				
 		function nicknameCheck() {
 			var nickname = document.modify_form.nickname.value;
+			
+			if (nickname.length == 0) {
+				alert('닉네임을 입력해 주세요');
+				document.modify_form.nickname.focus(); 
+				return false;
+			}
 					
 			var url = '<%=NoForm%>mNicknameCheck&nickname=' + nickname; 
 			window.open(url, 'checkPopUp', 'height=150, width=300');
@@ -55,107 +64,111 @@
 	<div class="modify">
 		<form name="modify_form" action="<%=YesForm%>" method="POST">
 			<input type="hidden" name="command" value="mModify">
+			<input type="hidden" name="isCheck" value="false"> 
+			
 			<h1>회원정보 수정</h1>
 
 			<table class="modify__table">
 				<tbody>
 					<tr>
 						<th><label for="id">ID</label></th>
-						<td><input type="text" name="id" size="25"
-							value="${requestScope.bean.id}" readonly><br> <span
-							class="error">${errorid}</span></td>
+						<td>
+							<input type="text" name="id" size="25" value="${requestScope.bean.id}" readonly><br> 
+							<span class="error">${errorid}</span>
+						</td>
 					</tr>
 
 					<tr>
 						<th><label for="name">이름</label></th>
-						<td><input type="text" name="name" size="25"
-							value="${requestScope.bean.name}" readonly><br> <span
-							class="error">${errorname}</span></td>
+						<td>
+							<input type="text" name="name" size="25" value="${requestScope.bean.name}" readonly><br> 
+							<span class="error">${errorname}</span>
+						</td>
 					</tr>
 
 					<tr>
 						<th><label for="nickname">닉네임</label></th>
-						<td><input type="text" name="nickname" size="25"
-							value="${requestScope.bean.nickname}">&nbsp;&nbsp;
-							<button onclick="nicknameCheck();">중복 검사</button> <br> <span
-							class="error">${errornickname}</span></td>
+						<td>
+							<input type="text" name="nickname" size="25" value="${requestScope.bean.nickname}">&nbsp;&nbsp;
+							<button onclick="nicknameCheck();">중복 검사</button><br> 
+							<span class="error">${errornickname}</span>
+						</td>
 					</tr>
 
 					<tr>
-						<th><label for="password">비밀번호<strong class="require">*</strong></label>
-						</th>
-						<td><input type="password" id="password" name="password"
-							size="25" placeholder="비밀번호를 입력 해주세요"><br> <span
-							class="error">${errorpassword}</span></td>
+						<th><label for="password">비밀번호<strong class="require">*</strong></label></th>
+						<td>
+							<input type="password" id="password" name="password" size="25" placeholder="비밀번호를 입력 해주세요"><br> 
+							<span class="error">${errorpassword}</span>
+						</td>
 					</tr>
 
 					<tr>
-						<th><label for="check-password">비밀번호 확인<strong
-								class="require">*</strong></label></th>
-						<td><input type="password" name="password_re" size="25"
-							placeholder="비밀번호를 한번 더 입력 해주세요"
-							onkeyup="return passwordReCheck()"><br> <span
-							id="msg" class="error">${errorpassword2}</span></td>
+						<th><label for="check-password">비밀번호 확인<strong class="require">*</strong></label></th>
+						<td>
+							<input type="password" name="password_re" size="25" placeholder="비밀번호를 한번 더 입력 해주세요" onkeyup="return passwordReCheck()"><br> 
+							<span id="msg" class="error">${errorpassword2}</span>
+						</td>
 					</tr>
 
 					<tr>
 						<th><label for="email">E-mail</label></th>
-						<td><input type="email" name="email" size="25"
-							value="${requestScope.bean.email}"><br> <span
-							class="error">${erroremail}</span></td>
+						<td>
+							<input type="email" name="email" size="25" value="${requestScope.bean.email}"><br> 
+							<span class="error">${erroremail}</span>
+						</td>
 					</tr>
 
 					<tr>
 						<th><label for="hphone">휴대폰</label></th>
-						<td><input type="tel" name="phone" size="25"
-							value="${requestScope.bean.phone}"><br> <span
-							class="error">${errorphone}</span></td>
+						<td>
+							<input type="tel" name="phone" size="25" value="${requestScope.bean.phone}"><br> 
+							<span class="error">${errorphone}</span>
+						</td>
 					</tr>
 
 					<tr>
 						<th><label for="zipcode">우편번호</label></th>
-						<td><input type="text" id="zipcode" name="zipcode" size="25"
-							value="${requestScope.bean.zipcode}" readonly> &nbsp; <input
-							type="button" onclick="execPostCode()" value="우편번호 찾기"><br>
+						<td>
+							<input type="text" id="zipcode" name="zipcode" size="25" value="${requestScope.bean.zipcode}" readonly>&nbsp;
+							<input type="button" onclick="execPostCode()" value="우편번호 찾기"><br>
 							<span class="error">${errorzipcode}</span></td>
 					</tr>
 
 					<tr>
 						<th><label for="address">주소</label></th>
-						<td><input type="text" id="address1" name="address1"
-							size="25" value="${requestScope.bean.address1}" readonly><br>
+						<td>
+							<input type="text" id="address1" name="address1" size="25" value="${requestScope.bean.address1}" readonly><br>
 							<span class="error">${erroraddress1}</span></td>
 					</tr>
 
 					<tr>
 						<th><label for="address-detail">상세 주소</label></th>
-						<td><input type="text" id="address2" name="address2"
-							size="25" value="${requestScope.bean.address2}"><br>
+						<td>
+							<input type="text" id="address2" name="address2" size="25" value="${requestScope.bean.address2}"><br>
 							<span class="error">${erroraddress2}</span></td>
 					</tr>
 
 					<tr>
 						<th><label for="animal-type">반려동물 종류</label></th>
-						<td class="radio-group">고양이<input type="radio"
-							name="animal_type" value="고양이" checked="checked"> 강아지<input
-							type="radio" name="animal_type" value="강아지"> 기타<input
-							type="radio" name="animal_type" value="기타">
+						<td class="radio-group">
+							고양이<input type="radio" name="animal_type" value="고양이" checked="checked"> 
+							강아지<input type="radio" name="animal_type" value="강아지"> 
+							기타<input type="radio" name="animal_type" value="기타"><br>
+							<span class="error">${erroranimal}</span>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-							<p>Point : ${requestScope.bean.mpoint} / 레벨 :
-								${requestScope.bean.mlevel}&nbsp;</p>
+							<p>Point : ${requestScope.bean.mpoint} / 레벨 :	${requestScope.bean.mlevel}&nbsp;</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td colspan="2" align="center" class="button-group">
-							<button type="submit"
-								value="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}"
-								onclick="return modifyCheck()">정보 수정</button>&nbsp;&nbsp; <a
-							href="#" onclick="dropCheck()"> 회원 탈퇴</a>&nbsp;&nbsp;
+							<button type="submit" onclick="return modifyCheck()">정보 수정</button>&nbsp;&nbsp; 
+							<a href="#" onclick="dropCheck()"> 회원 탈퇴</a>&nbsp;&nbsp;
 							<button type="reset">취&nbsp;&nbsp;소</button>
 						</td>
 					</tr>
@@ -164,8 +177,7 @@
 		</form>
 	</div>
 
-	<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		function execPostCode() {
 			new daum.Postcode({

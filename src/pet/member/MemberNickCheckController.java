@@ -28,7 +28,7 @@ public class MemberNickCheckController extends SuperClass {
 		} else {
 			
 			if (bean.getNickname().equalsIgnoreCase("admin")) {
-				request.setAttribute("message", "은(는) 사용 불가능한 닉네임 입니다.");
+				request.setAttribute("message", "admin은 사용 불가능한 닉네임 입니다.");
 				request.setAttribute("isCheck", false);
 						
 			} else {
