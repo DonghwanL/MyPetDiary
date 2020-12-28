@@ -10,6 +10,242 @@ import java.util.List;
 import pet.bean.Board;
 
 public class BoardDao extends SuperDao {
+	
+	public Board selectLike(int no) {
+		String sql = "select likes_count from boards where no = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Board bean = null;
+		int cnt = -99999;
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, no);
+			
+			rs= pstmt.executeQuery();
+			
+			if (rs.next()) {
+				bean = new Board();
+				
+				bean.setLikes_count(rs.getInt("likes_count"));
+			}
+			
+			conn.commit(); 
+
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return bean;
+	}
+	
+	public int updateLikes(int no) {
+		String sql = "update boards set likes_count = likes_count + 1 where no = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = -99999;
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, no);
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
+	
+	public int deletePost(int no) {
+		String sql = " delete from boards where no = ? ";
+		
+		PreparedStatement pstmt = null;
+		int cnt = -99999;
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
+	
+	public int updateReadsCount(int no) {
+		String sql = " update boards set reads_count = reads_count + 1 ";
+		sql += " where no = ? ";    
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = - 999999;
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, no);
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
+	
+	
+	public Board selectDataByID(int no) {
+	Board bean = null;
+		
+		String sql = " select * from boards ";
+		sql += " where no = ? ";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bean = new Board();
+				
+				bean.setBoard_type(rs.getString("board_type"));
+				bean.setComments_count(rs.getInt("comments_count"));
+				bean.setContent(rs.getString("content"));
+				bean.setCreated_at(String.valueOf(rs.getDate("created_at")));
+				bean.setDeleted_at(String.valueOf(rs.getDate("deleted_at")));
+				bean.setDepth(rs.getInt("depth"));
+				bean.setGroup_no(rs.getInt("groupno"));
+				bean.setLikes_count(rs.getInt("likes_count"));
+				bean.setNo(rs.getInt("no"));
+				bean.setOrder_no(rs.getInt("orderno"));
+				bean.setReads_count(rs.getInt("reads_count"));
+				bean.setTitle(rs.getString("title"));
+				bean.setUpdated_at(String.valueOf(rs.getDate("updated_at")));
+				bean.setWriter(rs.getString("writer"));
+			}
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;					
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				if(conn != null) {conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return bean;
+	}
+
 
 	public int selectTotalCount(String mode, String keyword) {
 		Connection conn = null;
@@ -80,7 +316,7 @@ public class BoardDao extends SuperDao {
 	      }
 	      
 	      sql += " ) ";
-	      sql += " where ranking between ? and ? ";
+	      sql += " where ranking between ? and ? and board_type = '문의' ";
 		
 		List<Board> lists = new ArrayList<Board>();
 

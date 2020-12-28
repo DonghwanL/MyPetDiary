@@ -138,6 +138,7 @@ header {
 	border-radius: 5px;
 	color: #333;
 	position: absolute;
+	z-index: 1;
 }
 
 .dropdown-submenu a {
@@ -241,13 +242,16 @@ mark {
   position: fixed;
   background-color: #2368B7;
   box-shadow: 0 -5 5px rgba(0, 0, 0, 0.25);
+  z-index :99999;
 }
 
 .copyright {
   margin-bottom: 7px;
+  z-index :99999;
 }
 
 .contact a {
 	font-weight: 400; 
 	color: #fff;
+	z-index :99999;
 }

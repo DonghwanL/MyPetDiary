@@ -1,0 +1,74 @@
+
+.inquiry {
+	width: 700px;
+	height: 600px;	
+	margin-top: 50px;
+}
+
+.inquiry-table {
+	width: 650px;
+	height: 400px;
+	font-size: 14px;
+	border-collapse: separate;
+	border-spacing: 5px;
+	margin-bottom: 20px;
+	border-top: 3px solid #bdc3c7;
+}
+
+.inquiry-table td {
+	height: 5px;
+}
+
+.inquiry-table a {
+	color: #333;
+	outline: none;
+}
+
+.inquiry-table a:hover {
+	color: #333;
+	font-weight: 500;
+}
+
+h1 {
+	color: #333;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.search-group {
+	margin-top: 15px;
+}
+
+.search-group select {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.search-group input {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #333;
+	width: 200px;
+	height: 25px;
+	outline: none;
+	vertical-align: top;
+	line-height: 20px;
+	padding: 12px;
+	font-size: 13px;
+}
+
+.search-group button {
+	font-size: 13px;
+	color: #fff;
+	background-color: #2368B7;
+	border: none;
+	border-radius: 4px;
+	padding: 7px;
+}
+
+button:hover {
+	outline: none;
+	font-weight: 500;
+}
