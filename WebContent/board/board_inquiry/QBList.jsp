@@ -55,7 +55,10 @@
 										<div>
 											<input type="text" class="search_input" name="keyword" id="keyword">&nbsp;&nbsp;
 											<button type="submit">검색</button>&nbsp;
-											<button type="button" onclick="writeForm();">글쓰기</button>
+											
+											<c:if test ="${login_type != 0}"> 
+												<button type="button" onclick="writeForm();">글쓰기</button>
+											</c:if>
 										</div>	
 										
 										<div align="center">

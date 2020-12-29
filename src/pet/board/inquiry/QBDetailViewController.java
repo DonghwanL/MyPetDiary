@@ -19,7 +19,7 @@ public class QBDetailViewController extends SuperClass {
 		
 		BoardDao bdao = new BoardDao();
 		
-		Board bean = bdao.selectDataByID(no);
+		Board bean = bdao.selectDataByPK(no);
 		
 		FlowParameters parameters 
 			= new FlowParameters(

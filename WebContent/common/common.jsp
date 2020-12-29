@@ -81,7 +81,6 @@
                             
                             <li class="dropdown-mypage"><a href="#" class="hover-color">My Page</a>
                                 <ul class="dropdown-submenu">
-                                	<li><a href="#">My Diary</a></li>
                             		<li><a href="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}">정보 수정</a></li>
                             		<li><a href="#">주문 조회</a></li>
                             		

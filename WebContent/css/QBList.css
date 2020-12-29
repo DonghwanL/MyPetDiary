@@ -1,7 +1,7 @@
 
 .inquiry {
 	width: 700px;
-	height: 600px;	
+	height: 850px;	
 	margin-top: 50px;
 }
 
@@ -10,7 +10,7 @@
 	height: 400px;
 	font-size: 14px;
 	border-collapse: separate;
-	border-spacing: 5px;
+	border-spacing: 15px;
 	margin-bottom: 20px;
 	border-top: 3px solid #bdc3c7;
 }

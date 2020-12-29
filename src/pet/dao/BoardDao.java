@@ -11,6 +11,99 @@ import pet.bean.Board;
 
 public class BoardDao extends SuperDao {
 	
+	public int modifyPost(Board bean) {
+		
+		String sql = " update boards set ";
+		sql += " title = ?, content = ?, updated_at = default, board_type = ? "; 
+		sql += " where no = ? ";    
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = - 999999;
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, bean.getTitle());
+			pstmt.setString(2, bean.getContent());
+			pstmt.setString(3, bean.getBoard_type());
+			pstmt.setInt(4, bean.getNo());
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+			
+	
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
+	
+	public int addWritePost(Board bean) {
+		String sql = " insert into boards(no, board_type, writer, title, content, groupno, orderno, ";
+		sql += " depth, reads_count, created_at) ";  
+		sql += " values(petboard.nextval, ?, ?, ?, ?, petboard.currval, default, default, default, default) ";  
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null; 
+		int cnt = -999999;
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bean.getBoard_type());
+			pstmt.setString(2, bean.getWriter());
+			pstmt.setString(3, bean.getTitle());
+			pstmt.setString(4, bean.getContent());
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally{
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
+	
 	public Board selectLike(int no) {
 		String sql = "select likes_count from boards where no = ?";
 		
@@ -183,9 +276,8 @@ public class BoardDao extends SuperDao {
 		return cnt;
 	}
 	
-	
-	public Board selectDataByID(int no) {
-	Board bean = null;
+	public Board selectDataByPK(int no) {
+		Board bean = null;
 		
 		String sql = " select * from boards ";
 		sql += " where no = ? ";
@@ -245,7 +337,6 @@ public class BoardDao extends SuperDao {
 		
 		return bean;
 	}
-
 
 	public int selectTotalCount(String mode, String keyword) {
 		Connection conn = null;
@@ -377,5 +468,6 @@ public class BoardDao extends SuperDao {
 		
 		return lists;
 	}
+
 
 }

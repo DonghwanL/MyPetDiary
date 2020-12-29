@@ -35,10 +35,6 @@ public class MemberDao extends SuperDao {
 			pstmt.setString(8, bean.getAddress1());
 			pstmt.setString(9, bean.getAddress2());
 			pstmt.setString(10, bean.getAnimal_type());
-//			pstmt.setInt(11, bean.getMpoint());
-//			pstmt.setInt(12, bean.getMlevel());
-//			pstmt.setString(13, bean.getCreated_at());
-//			pstmt.setInt(14, bean.getStatus());
 			
 			cnt = pstmt.executeUpdate(); 
 			conn.commit(); 
