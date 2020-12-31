@@ -1,16 +1,18 @@
 
+/* COMMON */ 
+
 .inquiry-detail {
 	margin-top: 50px;
-	height: 600px;
 }
 
 .inquiry-detail-table {
-	width: 600px;
+	width: 700px;
 	font-size: 13px;
 	border-collapse: separate;
 	border-spacing: 10px;
 	margin-bottom: 20px;
 	border-top: 2px solid #bdc3c7;
+	table-layout: fixed;
 	color: #333;
 }
 
@@ -21,7 +23,16 @@
 .content {
 	border-top: 1px solid #bdc3c7;
 	padding: 20px;
+	resize: none;
 }
+
+.like-image {
+	vertical-align: middle; 
+	margin-top: 1px;
+}
+
+
+/* BUTTON */ 
 
 .detail-button-group button {
 	font-size: 13px;
@@ -36,4 +47,41 @@
 .detail-button-group button:hover {
 	outline: none;
 	font-weight: 500;
+}
+
+/* COMMENTS */
+
+.comments-group {
+	width: 600px;
+}
+
+.comments-title {
+	font-weight: 500;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+.comments_content {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #333;
+	width: 90%;
+	height: 50px;
+	outline: none;
+	resize: none;
+	vertical-align: middle; 
+	margin-right: 3px;	
+}
+
+.comments-input div {
+	display: inline;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+textarea::placeholder {
+  font-size: 13px;
+  padding: 5px;
 }

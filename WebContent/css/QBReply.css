@@ -1,12 +1,12 @@
 
 /* COMMON */
 
-.inquiry-write {
+.inquiry-reply {
 	margin-top: 50px;
 	height: 600px;
 }
 
-.inquiry-write-table {
+.inquiry-reply-table {
 	width: 600px;
 	font-size: 13px;
 	border-collapse: separate;
@@ -16,7 +16,7 @@
 	color: #333;
 }
 
-.inquiry-detail-table td {
+.inquiry-reply-table td {
 	height: 3px;
 }
 
@@ -35,7 +35,7 @@
 
 /* INPUT, TEXTAREA */ 
 
-inquiry-write-table input {
+inquiry-reply-table input {
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	color: #333;
@@ -88,7 +88,7 @@ textarea::placeholder {
 
 /* BUTTON */
 
-.write-button-group button {
+.reply-button-group button {
   font-size: 13px;
   color: #fff;
   background-color: #2368B7;
@@ -98,7 +98,7 @@ textarea::placeholder {
   margin-right: 6px;
 }
 
-.write-button-group button:hover {
+.reply-button-group button:hover {
 	outline: none;
 	font-weight: 500;
 }

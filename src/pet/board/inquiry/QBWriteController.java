@@ -54,7 +54,7 @@ private Board bean = null;
 		BoardDao dao = new BoardDao();			
 		int cnt = -99999; 		
 
-		cnt = dao.addWritePost(bean);
+		cnt = dao.writePost(bean);
 		new QBListController().doGet(request, response);
 	}
 }

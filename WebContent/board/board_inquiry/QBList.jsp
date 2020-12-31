@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		 <div class="row"> 
-		 	<div class="col-md-offset-2 col-md-7 col-md-offset-2 inquiry">
+		 	<div class="col-md-offset-3 col-md-7 col-md-offset-2 inquiry">
 		 		<h1>문의 게시판</h1>
 		 		
 		 		<table class="inquiry-table">
@@ -26,12 +26,17 @@
 						<c:forEach var="bean" items="${requestScope.lists}">
 							<tr>
 								<td>
-									<c:forEach var="cnt" begin="1" end="${bean.depth}">
-										<span class="badge-re">re</span>
-									</c:forEach>
-									<a href="<%=NoForm%>QBDetailView&no=${bean.no}&${requestScope.parameters}">
-										${bean.title}
-									</a>
+									<c:if test="${bean.depth > 0}">
+										<c:forEach begin="1" end="${bean.depth}">
+											&nbsp;&nbsp;
+										</c:forEach>
+										<span class="reply-icon">↳</span>
+									</c:if>	
+									
+										<a href="<%=NoForm%>QBDetailView&no=${bean.no}&${requestScope.parameters}">
+											${bean.title}
+										</a>
+
 								</td>
 								<td>${bean.writer}</td>
 								<td>${bean.created_at}</td>
@@ -43,7 +48,6 @@
 							<td colspan="10" align="center">
 								<form class="search_form" name="search_form" action="<%=YesForm%>" method="get">
 									<input type="hidden" name="command" value="QBList">
-									
 									<div class="search-group">
 										<select name="mode" id="mode">
 											<option value="all" selected="selected">검색 모드

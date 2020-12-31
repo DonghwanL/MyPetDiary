@@ -75,6 +75,7 @@ input[type=button]:hover {
 	width: 600px;
 	height: 300px;
 	border: none;
+	resize: none;
 }
 
 .content textarea:focus {

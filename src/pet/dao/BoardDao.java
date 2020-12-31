@@ -8,8 +8,81 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pet.bean.Board;
+import pet.bean.Comment;
 
 public class BoardDao extends SuperDao {
+	
+	public int addReply(Board bean, int groupno, int orderno) {
+		// 1. 답글을 추가
+		// 2. 동일 그룹의 orderno 컬럼 갱신
+				
+		String sql = " insert into boards  ";
+		sql += " ( "; 
+		sql += " no, board_type, writer, title, content, groupno, orderno, depth, reads_count, created_at ";  
+		sql += " ) ";  
+		sql += " values ";  
+		sql += " ( ";  
+		sql += " petboard.nextval, ?, ?, ?, ?, ?, ?, ?, default, default ";  
+		sql += " ) ";  
+				
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = - 999999;
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, bean.getBoard_type());
+			pstmt.setString(2, bean.getWriter());
+			pstmt.setString(3, bean.getTitle());
+			pstmt.setString(4, bean.getContent());
+			pstmt.setInt(5, bean.getGroup_no());
+			pstmt.setInt(6, bean.getOrder_no());
+			pstmt.setInt(7, bean.getDepth());
+
+			cnt = pstmt.executeUpdate(); 
+
+			// 동일 그룹의 orderno 컬럼을 갱신
+
+			sql = " update boards set orderno = orderno + 1 ";
+			sql += " where groupno = ? and orderno > ? ";
+
+			pstmt = null;
+			pstmt = conn.prepareStatement(sql);
+
+			cnt = -99999;
+
+			pstmt.setInt(1, groupno);
+			pstmt.setInt(2, orderno);
+
+			cnt = pstmt.executeUpdate();
+
+			conn.commit(); 
+
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
 	
 	public int modifyPost(Board bean) {
 		
@@ -58,7 +131,7 @@ public class BoardDao extends SuperDao {
 		return cnt;
 	}
 	
-	public int addWritePost(Board bean) {
+	public int writePost(Board bean) {
 		String sql = " insert into boards(no, board_type, writer, title, content, groupno, orderno, ";
 		sql += " depth, reads_count, created_at) ";  
 		sql += " values(petboard.nextval, ?, ?, ?, ?, petboard.currval, default, default, default, default) ";  

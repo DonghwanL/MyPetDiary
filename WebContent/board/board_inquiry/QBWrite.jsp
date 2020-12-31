@@ -62,11 +62,10 @@
 		
 		function writeCheck() {
 			var title = document.forms[0].title.value;     
-		    var writer = document.forms[0].writer.value;
 		    var content = document.forms[0].content.value;
 		     
-		    if (title.length < 6) {    
-		        document.querySelector('.error').innerText = '제목은 6글자 이상 입력 해주세요';
+		    if (title.length < 5) {    
+		        document.querySelector('.error').innerText = '제목은 5글자 이상 입력 해주세요';
 		        document.forms[0].title.focus();    
 		        
 		        return false;                   

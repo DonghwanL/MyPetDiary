@@ -64,7 +64,6 @@
 		
 		function modifyCheck() {
 			var title = document.forms[0].title.value;     
-		    var writer = document.forms[0].writer.value;
 		    var content = document.forms[0].content.value;
 		     
 		    if (title.length < 6) {    

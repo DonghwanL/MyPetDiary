@@ -14,15 +14,15 @@ import pet.dao.BoardDao;
 
 public class LikeUpdateAction extends SuperClass {
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int no = Integer.parseInt(request.getParameter("board_no"));
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int no = Integer.parseInt(request.getParameter("no"));
 		
 		BoardDao bdao = new BoardDao();
 		
 		bdao.updateLikes(no);
 		
 		Board bean = bdao.selectLike(no);
-		
+
 		System.out.println("총 Like 개수: " + bean.getLikes_count());
 		
 		super.doGet(request, response);
@@ -35,8 +35,5 @@ public class LikeUpdateAction extends SuperClass {
 		
 		response.setContentType("application/x-json; charset=UTF-8");
 		response.getWriter().print(obj);
-
-//		String gotopage = "/board/board_inquiry/QBDetailView.jsp";
-//		super.goToPage(gotopage);
 	}
 }

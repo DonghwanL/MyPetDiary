@@ -14,13 +14,11 @@
 <body>
 	<div class="container">
 		 <div class="row"> 
-		 	<div class="col-md-offset-3 col-md-6 col-md-offset-3 inquiry-detail">		 		
+		 	<div class="col-md-offset-3 col-md-8 col-md-offset-2 inquiry-detail">		 		
 		 		<table class="inquiry-detail-table">
 					<tbody>
 						<tr>
-							<td width="10%">
-							작성일 : 
-							</td>
+							<td width="10%">작성일 :</td>
 							<td>${bean.created_at}</td>
 						</tr>
 						<tr>
@@ -39,12 +37,14 @@
 							<td colspan="2">
 								<div class="lieks-count" align="right">	
 							 		<c:choose>
-										<c:when test="${sessionScope.loginfo.id != bean.writer || sessionScope.loginfo.id == 'admin'}">
+										<c:when test="${sessionScope.loginfo.id != bean.writer}">
 											<form id="like_form">
 												<input type="hidden" name="command" value="LikeUpdate">
-												<input type="hidden" name="board_no" value="${bean.no}">
-												<button type="submit" onclick="return likeCount()">Like</button>
+												<input type="hidden" name="no" value="${bean.no}">
+												
+												<img src="${pageContext.request.contextPath}/images/thumbs_up.svg" class="like-image" onclick="return likeCount()">
 												<span id="like_result">${bean.likes_count}</span>
+
 											</form>
 										</c:when>
 										
@@ -52,22 +52,14 @@
 											<span class="like_result">추천 : ${bean.likes_count}</span>
 										</c:otherwise>
 									</c:choose>
-									
 								</div>
 							</td>
 						</tr>
 						
 						<tr>
-							<td>
-								<div class="comments">	
-									
-								</div>
-							</td>
-						</tr>
-						<tr>
 							<td colspan="2">
 								<div class="detail-button-group" align="right">
-									<c:if test="${sessionScope.loginfo.id == bean.writer || sessionScope.loginfo.id == 'admin'}">
+									<c:if test="${sessionScope.loginfo.id == bean.writer}">
 										<button type="submit" onclick="modifyPost()">수정</button>
 									</c:if>
 									
@@ -76,7 +68,7 @@
 							 		</c:if>
 							 		
 							 		<c:if test="${sessionScope.loginfo.id != null}">
-							 			<button type="submit" onclick="deletePost()">답글</button>
+							 			<button type="submit" onclick="replyPost()">답글</button>
 							 		</c:if>
 							 			
 							 		<button type="submit" onclick="moveList()">목록</button>
@@ -84,9 +76,37 @@
 								</div>
 							</td>
 						</tr>
+						
+						<tr>
+							<td>
+								<div class="comments-group">	
+									<form id="comments_form" action="<%=YesForm%>" method="POST" onsubmit="return commentCheck()">
+										<input type="hidden" name="command" value="QBCWrite">
+										<input type="hidden" name="no" value="${bean.no}">
+										<input type="hidden" name="comment_writer" value="${sessionScope.loginfo.id}">
+										
+										<c:if test="${sessionScope.loginfo.id != null}">
+											<p class="comments-title">Comments</p>
+											<div class="comments-input detail-button-group">
+												<textarea name="comments_content" class="comments_content" placeholder="댓글을 입력 해주세요"></textarea>
+												<button type="submit">등록</button>
+											</div>
+										</c:if>
+									</form>
+								</div>
+							</td>
+						</tr>
+							
+<%-- 						<c:if test="${requestScope.commentList != null}">
+								<c:forEach var="comments" items="${requestScope.commentList}">				
+									<tr>
+										<td>${comments_list.writer} / ${comments_list.created_at}</td>
+										<td>${comments_list.content}</td>
+									</tr>
+								/c:forEach>
+							</c:if> --%>
 					</tbody>
 		 		</table>
-
 			</div>
 		</div>
 	</div>
@@ -106,22 +126,36 @@
 		location.href = "<%=NoForm%>QBModify&no=${bean.no}&${requestScope.parameters}";
 	}
 	
+	function replyPost() {
+		location.href = "<%=NoForm%>QBReply&no=${bean.no}&${requestScope.parameters}&groupno=${bean.group_no}&orderno=${bean.order_no}&depth=${bean.depth}"
+	}
+	
+	function commentCheck() {
+		var form = document.getElementById("comments_form");
+		var content = document.querySelector('.comments_content').value;
+		
+		if (content == null || content == "") {
+			alert('내용을 입력 해주세요');
+			form.comments_content.focus();    
+			return false;
+		}
+	}
+	
 	function likeCount(){
+		var url = "/Mypet/Mypet?command=LikeUpdate"
+				
 		$.ajax({
-			url: "LikeUpdateAction.java",
+			url: url,
 			type: "POST",
 			cache: false,
 			dataType: "json",
 			data: $('#like_form').serialize(),
-			success:
-			function(data){ //ajax통신 성공시 넘어오는 데이터 통째 이름 =data
-				alert("'좋아요'가 반영되었습니다!") ; // data중 put한 것의 이름 like
-				$("#like_result").html(data.like); //id값이 like_result인 html을 찾아서 data.like값으로 바꿔준다.
+			success: function(data) { // Ajax 통신 성공시 넘어오는 데이터의 이름 : data
+				$("#like_result").html(data.like); //ID 값이 like_result인 html을 찾아서 data.like값으로 변경
 			},
 		
-			error:
-			function (request, status, error) {
-				alert("ajax실패")
+			error: function (request, status, error) {
+				alert("Ajax 실패")
 			}
 		});
 	}
