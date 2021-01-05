@@ -33,11 +33,12 @@
 										<span class="reply-icon">↳</span>
 									</c:if>	
 									
-										<a href="<%=NoForm%>QBDetailView&no=${bean.no}&${requestScope.parameters}">
+									<a href="<%=NoForm%>QBDetailView&no=${bean.no}&${requestScope.parameters}">
 											${bean.title}
-										</a>
+									</a>
 
 								</td>
+								
 								<td>${bean.writer}</td>
 								<td>${bean.created_at}</td>
 								<td>${bean.reads_count}</td>

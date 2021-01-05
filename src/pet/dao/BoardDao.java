@@ -542,5 +542,4 @@ public class BoardDao extends SuperDao {
 		return lists;
 	}
 
-
 }

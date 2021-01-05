@@ -1,4 +1,8 @@
 
+.container {
+	overflow: auto;
+}
+
 .inquiry {
 	width: 700px;
 	height: 650px;	
@@ -17,6 +21,13 @@
 
 .inquiry-table td {
 	height: 5px;
+}
+
+.inquiry-table td:nth-child(2),
+.inquiry-table td:nth-child(3),
+.inquiry-table td:nth-child(4) {
+	height: 5px;
+	text-align: center;
 }
 
 .inquiry-table a {

@@ -1,5 +1,6 @@
 ## Main Section ######################################################
 Main=pet.common.MainController
+manager=pet.common.adminController
 ## Member Section ####################################################
 mLogin=pet.member.MemberLoginController
 mLogout=pet.member.MemberLogOutController
@@ -34,5 +35,22 @@ QBDelete=pet.board.inquiry.QBDeleteController
 QBModify=pet.board.inquiry.QBModifyController
 QBReply=pet.board.inquiry.QBReplyController
 QBCWrite=pet.board.inquiry.QBCWriteController
-#QBCList=pet.board.inquiry.QBCListController
+QBCList=pet.board.inquiry.QBCListController
+QBCDelete=pet.board.inquiry.QBCDeleteController
+QBCModify=pet.board.inquiry.QBCModifyController
 LikeUpdate=pet.board.inquiry.LikeUpdateAction
+## Product Section  ####################################################
+#PRAdd=pet.product.PRAddController
+#PRDelete=pet.product.PRDeleteController
+#PRModify=pet.product.PRModifyController
+#PRList=pet.product.PRListController
+#PRDetailView=pet.product.PRDetailViewController
+#adminPRList=pet.product.adminPRListController
+## Order Section  ####################################################
+#CartAdd=pet.order.CartAddController
+#CartDelete=pet.order.CartDeleteController
+#CartModify=pet.order.CartModifyController
+#CartList=pet.order.CartListController
+#ORDetailView=pet.order.ORDetailViewController
+#ORList=pet.order.ORListController
+#ORPay=pet.order.ORPayController

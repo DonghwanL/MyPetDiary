@@ -17,11 +17,6 @@
 		 		<form id="reply_form" action="<%=YesForm%>" method="POST" onsubmit="return writeCheck()">
 					<input type="hidden" name="command" value="QBReply">
 					<input type="hidden" name="board_type" value="문의">
-					<input type="text" name="pageNumber" value="<%=request.getParameter("pageNumber")%>">
-					<input type="text" name="pageSize" value="<%=request.getParameter("pageSize")%>"> 
-					<input type="text" name="groupno" value="<%=request.getParameter("groupno")%>"> 
-					<input type="text" name="orderno" value="<%=request.getParameter("orderno")%>">
-					<input type="text" name="depth" value="<%=request.getParameter("depth")%>">
 					
 					<table class="inquiry-reply-table">
 						<tbody>

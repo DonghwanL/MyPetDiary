@@ -1,5 +1,9 @@
 
-/* COMMON */ 
+/* INQUIRY-TABLE */ 
+
+.container {
+	overflow: auto;
+}
 
 .inquiry-detail {
 	margin-top: 50px;
@@ -9,7 +13,7 @@
 	width: 700px;
 	font-size: 13px;
 	border-collapse: separate;
-	border-spacing: 10px;
+	border-spacing: 5px;
 	margin-bottom: 20px;
 	border-top: 2px solid #bdc3c7;
 	table-layout: fixed;
@@ -24,11 +28,13 @@
 	border-top: 1px solid #bdc3c7;
 	padding: 20px;
 	resize: none;
+	table-layout: fixed;
 }
 
 .like-image {
 	vertical-align: middle; 
 	margin-top: 1px;
+	cursor: pointer;
 }
 
 
@@ -49,10 +55,30 @@
 	font-weight: 500;
 }
 
+.comment-delete {
+	color: #333;
+	border: 0;
+	outline: 0;
+	background-color: #fff;
+}
+
 /* COMMENTS */
 
-.comments-group {
-	width: 600px;
+.inquiry-comment-table {
+	width: 700px;
+	height: 800px;
+	font-size: 13px;
+	border-collapse: separate;
+	border-spacing: 10px;
+	margin-bottom: 30px;
+	table-layout: fixed;
+	word-break: break-all;
+	max-height: 50px;
+	color: #333;
+}
+
+.comments-write {
+	width: 700px;
 }
 
 .comments-title {
@@ -66,7 +92,7 @@
 	border-radius: 4px;
 	color: #333;
 	width: 90%;
-	height: 50px;
+	height: 100%;
 	outline: none;
 	resize: none;
 	vertical-align: middle; 
@@ -77,6 +103,14 @@
 	display: inline;
 }
 
+.comment-writer {
+	font-weight: 500;
+}
+
+.comment-date {
+	color: #ccc;
+} 
+
 textarea:focus {
 	outline: none;
 }
@@ -84,4 +118,8 @@ textarea:focus {
 textarea::placeholder {
   font-size: 13px;
   padding: 5px;
+}
+
+.modify-button:hover {
+	color: #333;
 }

@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		 <div class="row"> 
-		 	<div class="col-md-offset-3 col-md-8 col-md-offset-2 inquiry-detail">		 		
+		 	<div class="col-md-offset-2 col-md-8 col-md-offset-2 inquiry-detail">		 		
 		 		<table class="inquiry-detail-table">
 					<tbody>
 						<tr>
@@ -79,7 +79,7 @@
 						
 						<tr>
 							<td>
-								<div class="comments-group">	
+								<div class="comments-write">	
 									<form id="comments_form" action="<%=YesForm%>" method="POST" onsubmit="return commentCheck()">
 										<input type="hidden" name="command" value="QBCWrite">
 										<input type="hidden" name="no" value="${bean.no}">
@@ -96,16 +96,36 @@
 								</div>
 							</td>
 						</tr>
-							
-<%-- 						<c:if test="${requestScope.commentList != null}">
-								<c:forEach var="comments" items="${requestScope.commentList}">				
-									<tr>
-										<td>${comments_list.writer} / ${comments_list.created_at}</td>
-										<td>${comments_list.content}</td>
-									</tr>
-								/c:forEach>
-							</c:if> --%>
 					</tbody>
+		 		</table>
+		 		
+		 		<table class="inquiry-comment-table">
+		 			<tbody>
+		 				<c:if test="${requestScope.commentList != null}">
+							<c:forEach var="comment" items="${requestScope.commentList}">		
+									<tr class="comment-list">
+	
+										<td class="comment-writer" width="20%">
+											<span class="comment-writer">${comment.writer}</span> 
+											<span class="comment-date">&nbsp;(${comment.created_at})</span>
+										</td>
+										<td class="comment-content" width="60%">${comment.content}</td>
+										<td class="comment-button" align="right" width="20%">
+
+					
+											<form id="comments_delete_form" action="<%=YesForm%>" method="GET" onsubmit="return deleteComment()">
+												<input type="hidden" name="command" value="QBCDelete">
+												<input type="hidden" name="cno" value="${comment.c_no}">
+												<input type="hidden" name="no" value="${bean.no}">
+												
+												<a href="#" class="modify-button" onclick="modifyComment(${comment.c_no})">[수정]</a> 
+												<button type="submit" class="comment-delete">[삭제]</button>
+											</form>
+										</td>
+									</tr>
+							</c:forEach>
+						</c:if>
+		 			</tbody>
 		 		</table>
 			</div>
 		</div>
@@ -122,8 +142,21 @@
 		}
 	}
 	
+	function deleteComment() {
+
+		if (!confirm('댓글을 삭제 하시겠습니까?')) {
+			return false;
+		}
+	}
+	
 	function modifyPost() {
 		location.href = "<%=NoForm%>QBModify&no=${bean.no}&${requestScope.parameters}";
+	}
+	
+	function modifyComment(cno) {
+       	 var url = '<%=NoForm%>QBCModify&cno=' + cno; 
+        
+         window.open(url, "modifyForm", "width=570, height=350, resizable=no, scrollbars=no");
 	}
 	
 	function replyPost() {
@@ -141,6 +174,8 @@
 		}
 	}
 	
+	// COMMENT
+
 	function likeCount(){
 		var url = "/Mypet/Mypet?command=LikeUpdate"
 				
@@ -159,6 +194,7 @@
 			}
 		});
 	}
+	
 </script>
 </body>
 </html>
