@@ -4,6 +4,10 @@ body {
 	overflow: auto;
 }
 
+img {
+	border-radius: 3px;
+}
+
 /* TOP MENU */ 
 
 .manager {
@@ -78,6 +82,7 @@ body {
 	border-bottom: 1px solid #ccc;
 	padding: 5px;
 	text-align: center;
+	vertical-align: middle;
 }
 
 /* MODIFY, DELETE */

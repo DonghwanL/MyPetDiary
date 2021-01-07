@@ -1,11 +1,136 @@
 
+/* COMMON */ 
+
 h1 {
 	margin-top: 50px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	font-size: 18px;
 	font-weight: 500;
 }
 
+.line {
+	background-color: #ccc; 
+	height: 3px; 
+	width: 600px;
+	margin-bottom: 20px;
+}
+
 .product-add {
+	width: 550px;
+	height: 650px;
+}
+
+
+/* TABLE */
+
+
+.product-add-table {
 	width: 650px;
+	font-size: 14px;
+}
+
+.product-add-table td {
+	margin-top: 10px;
+	padding-bottom: 7px;
+	vertical-align: middle;
+}
+
+
+/* INPUT */
+
+input {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #333;
+	height: 25px;
+	outline: none;
+	vertical-align: top;
+	line-height: 20px;
+	padding: 12px;
+}
+
+input[type=file] {
+	border: none;
+	line-height: 0;
+	padding: 0;
+}
+
+input::placeholder {
+	font-size: 12px;
+}
+
+input[type=text]:focus {
+	outline: none;
+	border: 1px solid #2368B7;
+}
+
+input[type=file]:focus {
+	outline: none;
+	border: 1px solid #2368B7;
+}
+
+/* TEXTAREA */
+
+textarea {
+	resize: none;
+	width: 400px;
+	height: 100px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 5px;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+textarea::placeholder {
+  font-size: 13px;
+  padding: 5px;
+}
+
+/* BUTTON */
+
+.product-button-group {
+	margin-top: 20px;
+}
+
+button {
+  font-size: 13px;
+  color: #fff;
+  background-color: #2368B7;
+  border: none;
+  border-radius: 4px;
+  padding: 7px;
+}
+
+button:hover {
+	outline: none;
+	font-weight: 500;
+}
+
+button:focus {
+	outline: none;
+	font-weight: 500;
+}
+
+.product-button-group a {
+	text-decoration: none;
+	background-color: #2368B7;
+	padding: 4px;
+	border-radius: 4px;
+	font-size: 13px;
+	color: #fff;
+}
+
+.product-button-group a:hover {
+	text-decoration: none;
+	color: #fff;
+	font-weight: 500;
+}
+
+.product-button-group a:focus {
+	text-decoration: none;
+	color: #fff;
+	font-weight: 500;
 }

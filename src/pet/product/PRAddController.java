@@ -30,17 +30,15 @@ public class PRAddController extends SuperClass {
 		String savePath = request.getSession().getServletContext().getRealPath("upload");
 		
 		bean = new Products();
-			
-		System.out.println( "[" + multi.getParameter("category") + "]" );
 		
 		if(multi.getParameter("stock") != null && multi.getParameter("stock").equals("") == false){
-			bean.setStock( Integer.parseInt( multi.getParameter("stock")));	
+			bean.setStock(Integer.parseInt( multi.getParameter("stock")));	
 		}
 		if(multi.getParameter("p_point") != null && multi.getParameter("p_point").equals("") == false){
-			bean.setP_point( Integer.parseInt( multi.getParameter("p_point")));	
+			bean.setP_point(Integer.parseInt( multi.getParameter("p_point")));	
 		}		
 		if(multi.getParameter("price") != null && multi.getParameter("price").equals("") == false){
-			bean.setPrice( Integer.parseInt( multi.getParameter("price")));	
+			bean.setPrice(Integer.parseInt( multi.getParameter("price")));	
 		}
 		
 		bean.setCategory(multi.getParameter("category"));		
@@ -49,6 +47,7 @@ public class PRAddController extends SuperClass {
 		bean.setCreated_at(multi.getParameter("created_at"));
 		bean.setName(multi.getParameter("name"));
 		bean.setFile_path(savePath);
+		bean.setP_type(multi.getParameter("p_type"));
 		
 		ProductDao pdao = new ProductDao();
 		int cnt = -99999; 

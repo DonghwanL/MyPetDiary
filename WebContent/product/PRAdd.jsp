@@ -13,15 +13,16 @@
 <body>
 	<div class="container">
 		<div class="row"> 
-			<div class="col-md-offset-3 col-md-8 col-md-offset-2 product-add">
-				<form name="product_add_form" action="<%=YesForm%>" method="POST">
+			<div class="col-md-offset-4 col-md-5 col-md-offset-3 product-add">
+				<form name="product_add_form" action="<%=YesForm%>" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="command" value="PRAdd">
 					<h1>상품 등록</h1>
+					<div class="line"></div>
 					
 					<table class="product-add-table">
 						<tbody>							
 							<tr>
-								<td>상품 타입</td>
+								<td width="20%">상품 타입</td>
 								<td>
 									<select name="p_type" id="p_type">
 										<option value="all" selected="selected">선택
@@ -92,18 +93,14 @@
 									<span class="error"></span>
 								</td>
 							</tr>
-	
-								
-							<tr>
-								<td colspan="2" align="center" class="button-group">
-									<button type="submit" onclick="return modifyCheck()">상품 등록</button>&nbsp;&nbsp; 
-									<a href="#" onclick="moveList()">목록</a>&nbsp;&nbsp;
-									<button type="reset">취&nbsp;&nbsp;소</button>
-								</td>
-							</tr>
-							
 						</tbody>
 					</table>
+					
+							<div class="product-button-group" align="center">
+								<button type="submit">상품 등록</button>&nbsp;&nbsp; 
+								<a href="#" onclick="moveList()">목&nbsp;록</a>&nbsp;&nbsp;
+								<button type="reset">취&nbsp;소</button>
+							</div>
 				</form>
 			</div>
 		</div>

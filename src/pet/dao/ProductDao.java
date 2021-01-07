@@ -12,9 +12,9 @@ import pet.bean.Products;
 public class ProductDao extends SuperDao {
 	
 	public int addProduct(Products bean) {
-		String sql = "insert into products(p_id, p_type, category, name, price, file_path, file_name, p_point, sell_counts, discount_rate, ";
+		String sql = "insert into products(p_id, p_type, category, name, price, stock, file_path, file_name, p_point, sell_counts, discount_rate, ";
 		sql += " created_at, content ) ";
-		sql += " values(product_seq.nextval, ?, ?, ?, ?, ?, ?, ?, default, default, default, ? ";
+		sql += " values(product_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default, ?) ";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -30,10 +30,11 @@ public class ProductDao extends SuperDao {
 			pstmt.setString(2, bean.getCategory());
 			pstmt.setString(3, bean.getName());
 			pstmt.setInt(4, bean.getPrice());
-			pstmt.setString(5, bean.getFile_path());
-			pstmt.setString(6, bean.getFile_name());
-			pstmt.setInt(7, bean.getP_point());
-			pstmt.setString(8, bean.getContent());
+			pstmt.setInt(5, bean.getStock());
+			pstmt.setString(6, bean.getFile_path());
+			pstmt.setString(7, bean.getFile_name());
+			pstmt.setInt(8, bean.getP_point());
+			pstmt.setString(9, bean.getContent());
 			
 			cnt = pstmt.executeUpdate(); 
 			conn.commit(); 
