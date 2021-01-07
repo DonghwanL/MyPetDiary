@@ -5,18 +5,28 @@
 
 .inquiry {
 	width: 700px;
-	height: 650px;	
+	height: auto; /* inherit; */	
 	margin-top: 50px;
 }
 
 .inquiry-table {
-	width: 650px;
-	height: 400px;
+	width: 700px;
 	font-size: 14px;
 	border-collapse: separate;
 	border-spacing: 15px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	border-top: 3px solid #bdc3c7;
+}
+
+.inquiry-table tr {
+	border-bottom: 1px solid #ccc;
+	border-collapse: collapse;
+} 
+
+h1 {
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 10px;
 }
 
 .inquiry-table td {
@@ -38,14 +48,6 @@
 .inquiry-table a:hover {
 	color: #333;
 	font-weight: 500;
-}
-
-h1 {
-	color: #333;
-	font-size: 20px;
-	font-weight: 500;
-	margin-bottom: 30px;
-	text-align: center;
 }
 
 .search-group {

@@ -254,7 +254,4 @@ public class CommentDao extends SuperDao {
 		return cnt;
 	}
 
-
-
-
 }

@@ -1,6 +1,5 @@
 ## Main Section ######################################################
 Main=pet.common.MainController
-manager=pet.common.adminController
 ## Member Section ####################################################
 mLogin=pet.member.MemberLoginController
 mLogout=pet.member.MemberLogOutController
@@ -13,20 +12,26 @@ mModify=pet.member.MemberModifyController
 mDelete=pet.member.MemberDeleteController
 mList=pet.member.MemberListController
 ## Free Board Section  ####################################################
-#FBList=pet.board.free.FBListController
-#FBWrite=pet.board.free.FBWriteController
-#FBDetailView=pet.board.free.FBDetailViewController
-#FBDelete=pet.board.free.FBDeleteController
-#FBModify=pet.board.free.FBModifyController
-#FBReply=pet.board.free.FBReplyController
-#FBComment=pet.board.free.FBCommentController
+FBList=pet.board.free.FBListController
+FBWrite=pet.board.free.FBWriteController
+FBDetailView=pet.board.free.FBDetailViewController
+FBDelete=pet.board.free.FBDeleteController
+FBModify=pet.board.free.FBModifyController
+FBReply=pet.board.free.FBReplyController
+FBCList=pet.board.free.FBCListController
+FBCModify=pet.board.free.FBCModifyController
+FBCDelete=pet.board.free.FBCDeleteController
+FBCWrite=pet.board.free.FBCWriteController
 ## Image Board Section  ####################################################
-#IBList=pet.board.image.IBListController
-#IBWrite=pet.board.image.IBWriteController
-#IBDetailView=pet.board.image.IBDetailViewController
-#IBDelete=pet.board.image.IBDeleteController
-#IBModify=pet.board.image.IBModifyController
-#IBComment=pet.board.free.IBCommentController
+IBList=pet.board.image.IBListController
+IBWrite=pet.board.image.IBWriteController
+IBDetailView=pet.board.image.IBDetailViewController
+IBDelete=pet.board.image.IBDeleteController
+IBModify=pet.board.image.IBModifyController
+IBCList=pet.board.image.IBCListController
+IBCModify=pet.board.image.IBCModifyController
+IBCDelete=pet.board.image.IBCDeleteController
+IBCWrite=pet.board.image.IBCWriteController
 ## Inquiry Board Section  ####################################################
 QBList=pet.board.inquiry.QBListController
 QBWrite=pet.board.inquiry.QBWriteController
@@ -45,7 +50,7 @@ LikeUpdate=pet.board.inquiry.LikeUpdateAction
 #PRModify=pet.product.PRModifyController
 #PRList=pet.product.PRListController
 #PRDetailView=pet.product.PRDetailViewController
-#adminPRList=pet.product.adminPRListController
+adminPRList=pet.product.adminPRListController
 ## Order Section  ####################################################
 #CartAdd=pet.order.CartAddController
 #CartDelete=pet.order.CartDeleteController

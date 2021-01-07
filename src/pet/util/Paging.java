@@ -64,15 +64,15 @@ public class Paging {
 		
 	}
 
-	private String getPagingHtml(String url) {
-		String result = "";
+	private String getPagingHtml(String url){ // 페이징 문자열을 만듬
+		String result = "" ;
 		
 		// add_param 변수 : 검색 관련하여 추가되는 파라미터 리스트
 		String add_param = "&mode=" + mode + "&keyword=" + keyword; 
 		
 		result += "<ul class='pagination" + paginationSize + "'>";
 		
-		if (pageNumber <= pageCount) { // 1부터 10페이지까지는 [맨처음]과 [이전]이 없음
+		if ( pageNumber <= pageCount ) { // 1부터 10페이지까지는 [맨처음]과 [이전]이 없음
 			//result += "맨처음&nbsp;&nbsp;";
 			//result += "이전&nbsp;&nbsp;";		
 			
@@ -88,7 +88,7 @@ public class Paging {
 		
 		for (int i = beginPage ; i <= endPage ; i++) {
 			if (i == pageNumber) { //현재 페이지이면 링크는 없고, 빨간색으로 표시
-				result += "<li class='active'><a><font color='#333'><b>" + i + "</b></font></a></li>&nbsp;";
+				result += "<li class='active'><a><b>" + i + "</b></a></li>&nbsp;";
 				
 			} else {
 				result += "<li><a href='" + url + "&pageNumber=" + i + 
@@ -97,7 +97,6 @@ public class Paging {
 		}
 		
 		// 마지막에는 [다음]과 [맨끝]이 없음
-		
 		if (pageNumber >= (totalPage / pageCount * pageCount + 1)) {
 			//result += "다음&nbsp;&nbsp;";
 			//result += "맨 끝&nbsp;&nbsp;";	

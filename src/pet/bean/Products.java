@@ -7,14 +7,13 @@ public class Products {
 	private String name; // 상품명
 	private int price; // 가격
 	private int stock; // 재고량
-	private String image1; // 대표 이미지 
-	private String image2; // 추가 이미지
+	private String file_path; // 파일 경로  
+	private String file_name; // 파일 이름
 	private String content; // 상세 설명
 	private int p_point; // 상품 포인트
 	private int sell_counts; // 판매 수량
 	private int discount_rate; // 할인율
 	private String created_at; // 등록 일자
-	
 	
 	public int getP_id() {
 		return p_id;
@@ -52,17 +51,17 @@ public class Products {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public String getImage1() {
-		return image1;
+	public String getFile_path() {
+		return file_path;
 	}
-	public void setImage1(String image1) {
-		this.image1 = image1;
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
 	}
-	public String getImage2() {
-		return image2;
+	public String getFile_name() {
+		return file_name;
 	}
-	public void setImage2(String image2) {
-		this.image2 = image2;
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 	public String getContent() {
 		return content;

@@ -1,0 +1,126 @@
+
+/* INQUIRY-TABLE */ 
+
+.container {
+	overflow: auto;
+}
+
+.image-detail {
+	height: 700px;
+	margin-top: 50px;
+}
+
+.image-detail-table {
+	width: 700px;
+	font-size: 13px;
+	border-collapse: separate;
+	border-spacing: 5px;
+	margin-bottom: 20px;
+	border-top: 2px solid #bdc3c7;
+	table-layout: fixed;
+	color: #333;
+}
+
+.image-detail-table td {
+	height: 3px;
+}
+
+.content {
+	border-top: 1px solid #bdc3c7;
+	padding: 20px;
+	resize: none;
+	table-layout: fixed;
+}
+
+.like-image {
+	vertical-align: middle; 
+	margin-top: 1px;
+	cursor: pointer;
+}
+
+
+/* BUTTON */ 
+
+.detail-button-group button {
+	font-size: 13px;
+	color: #fff;
+	background-color: #2368B7;
+	border: none;
+	border-radius: 4px;
+	padding: 7px;
+	margin: 4px;
+}
+
+.detail-button-group button:hover {
+	outline: none;
+	font-weight: 500;
+}
+
+.comment-delete {
+	color: #333;
+	border: 0;
+	outline: 0;
+	background-color: #fff;
+}
+
+/* COMMENTS */
+
+.image-comment-table {
+	width: 700px;
+	height: 800px;
+	font-size: 13px;
+	border-collapse: separate;
+	border-spacing: 10px;
+	margin-bottom: 30px;
+	table-layout: fixed;
+	word-break: break-all;
+	max-height: 50px;
+	color: #333;
+}
+
+.comments-write {
+	width: 700px;
+}
+
+.comments-title {
+	font-weight: 500;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+.comments_content {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #333;
+	width: 90%;
+	height: 100%;
+	outline: none;
+	resize: none;
+	vertical-align: middle; 
+	margin-right: 3px;	
+}
+
+.comments-input div {
+	display: inline;
+}
+
+.comment-writer {
+	font-weight: 500;
+}
+
+.comment-date {
+	color: #ccc;
+} 
+
+textarea:focus {
+	outline: none;
+}
+
+textarea::placeholder {
+  font-size: 13px;
+  padding: 5px;
+}
+
+.modify-button:hover {
+	color: #333;
+}

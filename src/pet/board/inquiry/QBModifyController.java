@@ -37,7 +37,6 @@ public class QBModifyController extends SuperClass {
 		bean.setTitle(request.getParameter("title"));
 		bean.setContent(request.getParameter("content"));
 		bean.setWriter(request.getParameter("writer"));
-		bean.setUpdated_at(request.getParameter("updated_at"));
 		bean.setBoard_type(request.getParameter("board_type"));
 
 		String gotopage = "";

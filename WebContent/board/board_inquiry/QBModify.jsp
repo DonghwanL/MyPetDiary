@@ -29,7 +29,7 @@
 						<tr>
 							<td width="20%">제목 :</td>
 							<td>
-								<input type="text" name="title" size="30" placeholder="제목을 입력하세요">
+								<input type="text" name="title" size="50" placeholder="제목을 입력하세요" value="${bean.title}">
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -37,7 +37,7 @@
 						<tr>
 							<td colspan="2" class="content">
 								<span class="error1"></span><br />
-								<textarea name="content" placeholder="게시물 내용을 입력 해주세요"></textarea>
+								<textarea name="content" placeholder="게시물 내용을 입력 해주세요">${bean.content}</textarea>
 							</td>
 						</tr>		
 							

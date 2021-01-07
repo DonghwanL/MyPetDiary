@@ -11,7 +11,7 @@ import pet.common.SuperClass;
 import pet.dao.BoardDao;
 
 public class QBWriteController extends SuperClass {
-private Board bean = null;
+	private Board bean = null;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

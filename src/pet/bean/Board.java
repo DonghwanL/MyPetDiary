@@ -6,8 +6,8 @@ public class Board {
 	private String writer; // 작성자 (FK)
 	private String title; // 글 제목
 	private String content; // 글 내용
-	private String file1; // 파일 1
-	private String file2; // 파일 2
+	private String file_path; // 파일 경로
+	private String file_name; // 파일 이름
 	private int group_no; // 그룹 번호
 	private int order_no; // 정렬 순서 번호
 	private int depth; // 글 깊이
@@ -15,8 +15,6 @@ public class Board {
 	private int likes_count; // 좋아요 수
 	private int comments_count; // 코멘트 수 
 	private String created_at; // 작성 일자 
-	private String updated_at; // 수정 일자 
-	private String deleted_at; // 삭제 일자
 	
 	public Board() {}
 
@@ -60,20 +58,20 @@ public class Board {
 		this.content = content;
 	}
 
-	public String getFile1() {
-		return file1;
+	public String getFile_path() {
+		return file_path;
 	}
 
-	public void setFile1(String file1) {
-		this.file1 = file1;
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
 	}
 
-	public String getFile2() {
-		return file2;
+	public String getFile_name() {
+		return file_name;
 	}
 
-	public void setFile2(String file2) {
-		this.file2 = file2;
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 
 	public int getGroup_no() {
@@ -132,20 +130,4 @@ public class Board {
 		this.created_at = created_at;
 	}
 
-	public String getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
-	}
-
-	public String getDeleted_at() {
-		return deleted_at;
-	}
-
-	public void setDeleted_at(String deleted_at) {
-		this.deleted_at = deleted_at;
-	}
-	
 }

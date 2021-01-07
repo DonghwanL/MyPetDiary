@@ -85,7 +85,7 @@
                             		<li><a href="#">주문 조회</a></li>
                             		
                             		<c:if test="${login_type == 1}">
-										<li><a href="<%=NoForm%>manager">관리자 메뉴</a></li>
+										<li><a href="<%=NoForm%>mList">관리자 메뉴</a></li>
 									</c:if>
                             	</ul>
                             </li>

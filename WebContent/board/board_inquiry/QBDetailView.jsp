@@ -22,7 +22,7 @@
 							<td>${bean.created_at}</td>
 						</tr>
 						<tr>
-							<td width="10%">이름 :</td>
+							<td width="10%">작성자 :</td>
 							<td>${bean.writer}</td>
 						</tr>
 						<tr>

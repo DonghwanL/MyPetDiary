@@ -24,7 +24,7 @@ public class QBCModifyController extends SuperClass {
 		bean = cdao.getComment(cno);
 		
 		request.setAttribute("comment", bean);
-		
+
 		super.doGet(request, response);
 		
 		String gotopage = "board/board_inquiry/QBCModify.jsp";
@@ -39,11 +39,13 @@ public class QBCModifyController extends SuperClass {
 		bean.setC_no(Integer.parseInt(request.getParameter("cno")));
 		bean.setContent(request.getParameter("comment_content"));
 		
+		super.doPost(request, response);
+		
 		String gotopage = "";
 		
 		CommentDao cdao = new CommentDao();
 		int cnt = -999999;
-			
+
 		cnt = cdao.modifyComment(bean);
 		
 		System.out.println("코멘트 수정 완료");

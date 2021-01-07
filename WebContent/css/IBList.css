@@ -1,0 +1,88 @@
+/* TABLE */
+
+h1 {
+	font-size: 18px;
+	font-weight: 500;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.image-board {
+	width: 650px;
+	height: auto;	
+	overflow: auto;
+	font-size: 14px;
+}
+
+.image-board a {
+	color: #333;
+	outline: none;
+}
+
+.image-board a:hover {
+	color: #333;
+	font-weight: 500;
+}
+
+.image-board img {
+	border-radius: 2px;
+	margin-bottom: 5px;
+}
+
+.image-board img:hover {
+	opacity: 0.8;
+}
+
+.title {
+	margin-bottom: 5px;
+}
+
+.line {
+	background-color: #ccc; 
+	height: 3px; 
+	width: 600px;
+	margin-bottom: 10px;
+}
+
+
+/* INPUT, BUTTON */ 
+
+.search-group {
+	margin-top: 15px;
+}
+
+.search-group select {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.search-group input {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #333;
+	width: 200px;
+	height: 25px;
+	outline: none;
+	vertical-align: top;
+	line-height: 20px;
+	padding: 12px;
+	font-size: 13px;
+}
+
+.search-group button {
+	font-size: 13px;
+	color: #fff;
+	background-color: #2368B7;
+	border: none;
+	border-radius: 4px;
+	padding: 7px;
+}
+
+button:hover {
+	outline: none;
+	font-weight: 500;
+}
+
+.paging-section {
+	height: 100px;
+}

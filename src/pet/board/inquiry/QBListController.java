@@ -27,7 +27,7 @@ public class QBListController extends SuperClass {
 		System.out.println(this.getClass() + " : " + parameters.toString());
 		
 		
-		int totalCount = bdao.selectTotalCount(
+		int totalCount = bdao.selectTotalCount_Q(
 							parameters.getMode(),
 							parameters.getKeyword());
 		
@@ -43,7 +43,7 @@ public class QBListController extends SuperClass {
 				parameters.getKeyword());
 				
 		
-		List<Board> lists = bdao.readBoardList(
+		List<Board> lists = bdao.readBoardList_Q(
 				pageInfo.getBeginRow(),
 				pageInfo.getEndRow(),
 				parameters.getMode(),
