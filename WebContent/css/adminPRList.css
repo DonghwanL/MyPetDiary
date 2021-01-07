@@ -80,6 +80,17 @@ body {
 	text-align: center;
 }
 
+/* MODIFY, DELETE */
+
+.modify-button:hover {
+	color: #333;
+	font-weight: 500;
+}
+
+.delete-button:hover {
+	color: #333;
+	font-weight: 500;
+}
 
 /* SEARCH */
 

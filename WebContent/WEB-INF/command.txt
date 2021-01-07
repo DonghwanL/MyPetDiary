@@ -45,9 +45,9 @@ QBCDelete=pet.board.inquiry.QBCDeleteController
 QBCModify=pet.board.inquiry.QBCModifyController
 LikeUpdate=pet.board.inquiry.LikeUpdateAction
 ## Product Section  ####################################################
-#PRAdd=pet.product.PRAddController
-#PRDelete=pet.product.PRDeleteController
-#PRModify=pet.product.PRModifyController
+PRAdd=pet.product.PRAddController
+PRDelete=pet.product.PRDeleteController
+PRModify=pet.product.PRModifyController
 #PRList=pet.product.PRListController
 #PRDetailView=pet.product.PRDetailViewController
 adminPRList=pet.product.adminPRListController
