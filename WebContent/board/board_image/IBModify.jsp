@@ -22,6 +22,7 @@
 				<input type="hidden" name="command" value="IBModify">
 				<input type="hidden" name="no" value="${bean.no}">
 				<input type="hidden" name="board_type" value="사진">
+				<input type="hidden" name="image" value="${bean.file_name}">
 					
 				<table class="image-modify-table">
 					<tbody>						

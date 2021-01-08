@@ -7,11 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import pet.bean.Board;
-import pet.bean.Member;
-import pet.board.inquiry.QBListController;
 import pet.common.SuperClass;
 import pet.dao.BoardDao;
 
@@ -35,47 +32,26 @@ public class IBModifyController extends SuperClass {
 	}
 	
 	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MultipartRequest multRequest = null;
-
- 		// 업로드 될 파일의 최대 사이즈 (10MB)
-		int sizeLimit = 10 * 1024 * 1024;
-		
-		// 파일이 업로드될 실제 tomcat 폴더의 경로 (WebContent 기준)
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		MultipartRequest multi = (MultipartRequest)request.getAttribute("multi");
 		String savePath = request.getSession().getServletContext().getRealPath("upload");
-		System.out.println("savePath : " + savePath);
 		
-		try {
-			// MultipartRequest 객체를 생성하면 파일 업로드 수행
-			multRequest = new MultipartRequest(request, savePath, sizeLimit, "UTF-8", new DefaultFileRenamePolicy());	
-			
-			// 파일 이름 추출 
-			String filename = multRequest.getFilesystemName("imageFile");
-			String title = multRequest.getParameter("title");
-			String content = multRequest.getParameter("content");
-
-			Member login = (Member)super.session.getAttribute("loginfo");
-
-			bean = new Board();
-			
-			bean.setBoard_type("사진");
-			bean.setWriter(login.getId()); 
-			bean.setTitle(title);
-			bean.setFile_name(filename);
-			bean.setFile_path(savePath); 
-			bean.setContent(content);
-
-			BoardDao dao = new BoardDao();
-			int cnt = -999999;
-			
-			cnt = dao.imageModify(bean);
-
-			super.doGet(request, response);
-
-			new IBListController().doGet(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		bean = new Board();
+		
+		bean.setBoard_type(multi.getParameter("board_type"));
+		bean.setTitle(multi.getParameter("title"));
+		bean.setFile_name(multi.getFilesystemName("imageFile"));
+		bean.setFile_path(savePath); 
+		bean.setContent(multi.getParameter("content"));
+		
+		if (multi.getParameter("no") != null && multi.getParameter("no").equals("") == false) {
+			bean.setNo(Integer.parseInt(multi.getParameter("no")));	
 		}
+	
+		BoardDao bdao = new BoardDao();			
+		int cnt = -999999;
+		
+		cnt = bdao.imageModify(bean);
+		new IBListController().doGet(request, response);
 	}
 }

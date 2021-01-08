@@ -15,7 +15,7 @@ public class BoardDao extends SuperDao {
 	public int imageModify(Board bean) {
 
 		String sql = " update boards set ";
-		sql += " title = ?, content = ?, board_type = ?  file_path = ?, file_name = ? "; 
+		sql += " title = ?, content = ?, board_type = ?, file_path = ?, file_name = ? "; 
 		sql += " where no = ? ";
 		
 		Connection conn = null;

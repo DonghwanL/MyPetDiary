@@ -25,19 +25,20 @@
 					<div class="box_login">
 						<div class="inp_text">
 							<label for="loginId" class="screen_out">아이디</label> <input
-								type="text" id="loginId" name="id" placeholder="아이디"><br> <span>${errorid}</span>
+								type="text" id="loginId" name="id" placeholder="아이디"><br> 
+							<span class="error">${errorid}</span>
 						</div>
 						<div class="inp_text">
 							<label for="loginPw" class="screen_out">비밀번호</label> <input
 								type="password" id="loginPw" name="password" placeholder="비밀번호">
-							<span>${errorpassword}</span>
+							<span class="error">${errorpassword}</span>
 						</div>
 					</div>
 					<button type="submit" class="btn_login">로그인</button>
 					<button type="button" onclick="location.href='<%=NoForm%>mSignUp'" class="btn_createId">회원가입</button><br><br>
-					<span>${errmsg}</span>
+					<span class="error">${errmsg}</span>
 
-
+ 
 					<!-- 네이버 로그인방식 작업중..... -->
 					<div id="naver_id_login"></div>
 					<script type="text/javascript"

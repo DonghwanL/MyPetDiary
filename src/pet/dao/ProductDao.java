@@ -11,6 +11,61 @@ import pet.bean.Products;
 
 public class ProductDao extends SuperDao {
 	
+	public int modifyProduct(Products bean) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "update products set ";
+		sql += " p_type = ?, category = ?, file_name = ?, file_path = ?, content = ?, name = ?, ";
+		sql += " stock = ?, price = ?, p_point = ? ";
+		sql += " where p_id  = ? ";
+		
+		int cnt = -999999;
+		
+		try {
+			conn = super.getConnection();
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bean.getP_type());
+			pstmt.setString(2, bean.getCategory());
+			pstmt.setString(3, bean.getFile_name());
+			pstmt.setString(4, bean.getFile_path());
+			pstmt.setString(5, bean.getContent());
+			pstmt.setString(6, bean.getName());
+			pstmt.setInt(7, bean.getStock());
+			pstmt.setInt(8, bean.getPrice());
+			pstmt.setInt(9, bean.getP_point());			
+			pstmt.setInt(10, bean.getP_id());
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
+	
 	public int addProduct(Products bean) {
 		String sql = "insert into products(p_id, p_type, category, name, price, stock, file_path, file_name, p_point, sell_counts, discount_rate, ";
 		sql += " created_at, content ) ";
@@ -100,7 +155,7 @@ public class ProductDao extends SuperDao {
 			conn.commit(); 
 
 		} catch (Exception e) {
-			SQLException err = (SQLException)e;			
+			SQLException err = (SQLException)e;	
 			cnt = - err.getErrorCode();			
 			e.printStackTrace();
 
@@ -123,7 +178,7 @@ public class ProductDao extends SuperDao {
 		return cnt;
 	}
 
-	private Products selectProductByPK(int p_id) {
+	public Products selectProductByPK(int p_id) {
 		Products bean = null;
 		
 		String sql = "select * ";

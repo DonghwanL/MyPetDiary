@@ -52,7 +52,7 @@
 				<c:forEach var="product" items="${requestScope.lists}">
 					<tr class="product-data">
 						<td>
-							<img alt="product-image" src="<%=cp%>/upload/${product.file_name}" width="80" height="60" />
+							<img src="<%=cp%>/upload/${product.file_name}"  alt="product-image" width="80" height="60" />
 						</td>
 						<td>${product.p_type}</td>
 						<td>${product.category}</td>
@@ -64,7 +64,7 @@
 						<td>${product.created_at}</td>
 						<td colspan="2">
 							<div class="modify-delete-group">
-								<a href="#" class="modify-button" onclick="modifyComment(${comment.c_no})">[수정]</a>&nbsp; 
+								<a href="<%=NoForm%>PRModify&p_id=${product.p_id}&${requestScope.parameters}" class="modify-button">[수정]</a>&nbsp; 
 								<a href="<%=NoForm%>PRDelete&p_id=${product.p_id}&${requestScope.parameters}" onclick="return deleteCheck()">[삭제]</a> 
 							</div>
 						</td>
@@ -107,7 +107,7 @@
 		}
 		
 		function deleteCheck() {
-			if (!confirm('댓글을 삭제 하시겠습니까?') {
+			if (!confirm('상품을 삭제 하시겠습니까?')) {
 				return false;
 			}
 		}

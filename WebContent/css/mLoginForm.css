@@ -130,3 +130,8 @@ body, button, input, select, td, textarea, th {
 	float: right;
 	color: #777;
 }
+
+.error {
+	font-size: 13px;
+	color: #333;
+}

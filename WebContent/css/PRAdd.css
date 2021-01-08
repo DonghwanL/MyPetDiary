@@ -15,14 +15,20 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.error {
+	display: inline-block;
+	margin-left: 5px;
+	font-size: 11px;
+	color: #b3130b;
+}
+
 .product-add {
 	width: 550px;
-	height: 650px;
+	height: 400px;
 }
 
 
 /* TABLE */
-
 
 .product-add-table {
 	width: 650px;
@@ -49,12 +55,6 @@ input {
 	padding: 12px;
 }
 
-input[type=file] {
-	border: none;
-	line-height: 0;
-	padding: 0;
-}
-
 input::placeholder {
 	font-size: 12px;
 }
@@ -64,10 +64,17 @@ input[type=text]:focus {
 	border: 1px solid #2368B7;
 }
 
+input[type=file] {
+	margin-top: 10px;
+	border: none;
+	line-height: 0;
+	padding: 0;
+}
+
 input[type=file]:focus {
 	outline: none;
-	border: 1px solid #2368B7;
 }
+
 
 /* TEXTAREA */
 
@@ -88,6 +95,36 @@ textarea::placeholder {
   font-size: 13px;
   padding: 5px;
 }
+
+
+
+/* SELECT */
+
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	
+	font-family: "Noto Sansf KR", sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.5;
+	width: 55px;
+	
+	color: #333;
+	background-color: #fff;
+	padding-left: 13px;
+	padding-top: 2px;
+	margin: 0;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+}
+
+select:focus {
+	outline: none;
+}
+
+
 
 /* BUTTON */
 
@@ -124,12 +161,6 @@ button:focus {
 }
 
 .product-button-group a:hover {
-	text-decoration: none;
-	color: #fff;
-	font-weight: 500;
-}
-
-.product-button-group a:focus {
 	text-decoration: none;
 	color: #fff;
 	font-weight: 500;
