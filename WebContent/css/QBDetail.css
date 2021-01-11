@@ -66,11 +66,10 @@
 
 .inquiry-comment-table {
 	width: 700px;
-	height: 800px;
 	font-size: 13px;
 	border-collapse: separate;
 	border-spacing: 10px;
-	margin-bottom: 30px;
+	margin-bottom: 60px;
 	table-layout: fixed;
 	word-break: break-all;
 	max-height: 50px;

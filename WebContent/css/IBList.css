@@ -8,28 +8,30 @@ h1 {
 }
 
 .image-board {
+	height: auto;
+}
+
+.image-board-table {
 	width: 650px;
-	height: auto;	
-	overflow: auto;
 	font-size: 14px;
 }
 
-.image-board a {
+.image-board-table a {
 	color: #333;
 	outline: none;
 }
 
-.image-board a:hover {
+.image-board-table a:hover {
 	color: #333;
 	font-weight: 500;
 }
 
-.image-board img {
+.image-board-table img {
 	border-radius: 2px;
 	margin-bottom: 5px;
 }
 
-.image-board img:hover {
+.image-board-table img:hover {
 	opacity: 0.8;
 }
 
@@ -85,4 +87,5 @@ button:hover {
 
 .paging-section {
 	height: 100px;
+	margin-bottom: 50px;
 }

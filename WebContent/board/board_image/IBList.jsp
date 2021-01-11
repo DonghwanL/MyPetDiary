@@ -21,12 +21,12 @@
 </script>
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="image-board">
 		<br>
 		<h1>사진 게시판</h1>
 		<br>
 		<div class="line"></div>
-		<table class="image-board">
+		<table class="image-board-table">
 			<tbody>
 				<tr>
 					<c:set var="a" value="0" />

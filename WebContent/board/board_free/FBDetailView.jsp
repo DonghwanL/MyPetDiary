@@ -155,6 +155,7 @@
 	function modifyComment(cno) {
        	 var url = '<%=NoForm%>FBCModify&cno=' + cno; 
         
+       	 window.name = 'parent';
          window.open(url, "modifyForm", "width=570, height=350, resizable=no, scrollbars=no");
 	}
 	

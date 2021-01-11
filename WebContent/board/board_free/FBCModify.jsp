@@ -106,7 +106,7 @@ input[type=button] {
 			return false;
 		}
 		
-		window.close();
+		self.close();
 	}
 </script>
 </body>

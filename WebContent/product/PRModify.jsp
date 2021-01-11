@@ -88,7 +88,6 @@
 								<td>상품 이미지</td>
 								<td>
 									<input type="file" class="imageFile" name="imageFile" size="30"><br> 
-									<span class="error"></span>
 								</td>
 							</tr>
 							
@@ -128,7 +127,7 @@
 								<td>상품 설명</td>
 								<td>
 									<textarea class="content" name="content" placeholder="상품 설명을 입력해 주세요" onclick="formCheck()">
-										${product.content}
+									${product.content}
 									</textarea>
 									<span class="error content_error"></span>
 								</td>

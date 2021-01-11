@@ -49,7 +49,7 @@
 								
 							<tr>
 								<td>상품 이미지</td>
-								<td>
+								<td class="image-upload">
 									<input type="file" class="imageFile" name="imageFile" size="30">
 									<span class="error"></span>
 								</td>
