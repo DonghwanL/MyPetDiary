@@ -88,7 +88,7 @@
 							<button type="submit" onclick="moveList()">목록</button>
 						</div>
 
-						<div align="center">
+						<div align="center" class="paging-section">
 							<div>${requestScope.pagingHtml}</div>
 						</div>
 					</form>

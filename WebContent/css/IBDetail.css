@@ -3,10 +3,10 @@
 
 .container {
 	overflow: auto;
+	height: 100%;
 }
 
 .image-detail {
-	height: 700px;
 	margin-top: 50px;
 }
 
@@ -123,4 +123,8 @@ textarea::placeholder {
 
 .modify-button:hover {
 	color: #333;
+}
+
+.footer {
+	margin-bottom: 100px;
 }

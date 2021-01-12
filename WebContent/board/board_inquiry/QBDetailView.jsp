@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="./../../common/common.jsp"%>    
-    
+<%@ include file="./../../common/common.jsp"%>
+
+<%
+	//게시판 글 줄바꿈 (개행문자 치환)
+	pageContext.setAttribute("br", "<br/>");
+	pageContext.setAttribute("cn", "\n");
+%>  
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +36,7 @@
 							<td>${bean.title}</td>
 						</tr>
 						<tr>
-							<td colspan="2" class="content">${bean.content}</td>
+							<td colspan="2" class="content">${fn:replace(bean.content, cn, br)}</td>
 						</tr>		
 						
 						<tr>
@@ -127,6 +133,7 @@
 						</c:if>
 		 			</tbody>
 		 		</table>
+		 		<div class="footer"></div>
 			</div>
 		</div>
 	</div>

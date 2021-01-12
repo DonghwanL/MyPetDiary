@@ -122,3 +122,8 @@ textarea::placeholder {
 .modify-button:hover {
 	color: #333;
 }
+
+.footer {
+	height: 100px;
+	margin-bottom: 50px;
+}

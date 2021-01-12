@@ -4,7 +4,11 @@
 <%@ include file="./../../common/common.jsp"%>    
 
 <%
-String cp = request.getContextPath();
+	// 게시판 글 줄바꿈 (개행문자 치환)
+	pageContext.setAttribute("br", "<br/>");
+	pageContext.setAttribute("cn", "\n");
+
+	String cp = request.getContextPath();
 %>
     
 <!DOCTYPE html>
@@ -40,7 +44,7 @@ String cp = request.getContextPath();
 									<img align="middle" width="300" height="300"
 									src="<%=cp%>/upload/${bean.file_name}"
 									alt="img-thumbnail"><br><br>
-									${bean.content}
+									${fn:replace(bean.content, cn, br)}
 								</td>
 							</tr>		
 							
@@ -137,6 +141,7 @@ String cp = request.getContextPath();
 						</c:if>
 		 			</tbody>
 		 		</table>
+		 		<div class="footer"></div>
 			</div>
 		</div>
 	</div>

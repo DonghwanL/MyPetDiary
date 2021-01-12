@@ -672,7 +672,7 @@ public class BoardDao extends SuperDao {
 			while(rs.next()){
 				Board bean = new Board();
 							 	
-				bean.setBoard_type(rs.getString("board_type"));
+				bean.setBoard_type(rs.getString("board_type"));			
 				bean.setContent(rs.getString("content"));
 				bean.setCreated_at(String.valueOf(rs.getDate("created_at")));
 				bean.setDepth(rs.getInt("depth"));

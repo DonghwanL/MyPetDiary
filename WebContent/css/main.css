@@ -189,6 +189,7 @@ header {
   text-indent: -99999px;
 }
 
+
 /* SECTION */
 
 .section--visual {
@@ -201,6 +202,8 @@ header {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+/* SECTION_ INFO */ 
+
 .info {
 	margin-top: 3%;
 	margin-left: 23%;
@@ -209,15 +212,17 @@ header {
 
 .info__description {
 	border-radius: 4px;
+	font-weight: 400;
 	width: 630px;
 	padding: 15px;
 	margin-bottom: 30px;
 	text-align: center;
 	background-color: #ecf0f1;
+	letter-spacing: -1px;
 }
 
 .info__description p {
-	font-size: 13px;
+	font-size: 15px;
 	padding: 7px;
 	color: #3c3c3c;
 }
@@ -227,10 +232,12 @@ mark {
 	color: #fff;
 }
 
+/* SECTION_ SHOP_LINK */ 
+
 .shop-direct {
 	width: 100%;
 	height: 250px;
-	margin-bottom: 60px;
+	margin-bottom: 50px;
 }
 
 .shop-direct img {
@@ -266,10 +273,38 @@ mark {
 }
 
 .shop-direct-desc a:hover {
-	background-color: #84817a;
-	color: #fff;
 	font-weight: 500;
-	border: 1px solid #84817a;
+}
+
+
+/* SECTION_ SWIPER */
+
+.main-slide-title {
+	font-size: 25px;
+	font-weight: 500;
+	letter-spacing: -1px;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.swiper-container {
+	height: 250px;
+	margin-bottom: 50px;
+	background-color: #ecf0f1;
+}
+
+.swiper-slide {
+	text-align: center;
+	display: flex; /* 내용을 중앙정렬 하기 위해 Flex 사용 */
+	align-items: center; /* 위아래 기준 중앙정렬 */
+	justify-content: center; /* 좌우 기준 중앙정렬 */
+}
+
+.swiper-slide img {
+	width: 200px;
+	height: 150px;
+	border-radius: 3px;
+	max-width: 100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
 }
 
 

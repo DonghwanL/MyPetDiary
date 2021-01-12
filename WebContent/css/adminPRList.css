@@ -134,3 +134,8 @@ button:hover {
 	outline: none;
 	font-weight: 500;
 }
+
+.paging-section {
+	margin-bottom: 50px;
+	height: 100px;
+}

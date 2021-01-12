@@ -90,7 +90,7 @@
                             	</ul>
                             </li>
                             
-                            <li class="shop"><a href="#" class="hover-color">Shop</a></li>
+                            <li class="shop"><a href="<%=NoForm%>PRList" class="hover-color">Shop</a></li>
                     </ul>
                 </div>
 
