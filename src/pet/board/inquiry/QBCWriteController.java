@@ -6,10 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pet.bean.Board;
+import org.json.simple.JSONObject;
+
 import pet.bean.Comment;
 import pet.common.SuperClass;
-import pet.dao.BoardDao;
 import pet.dao.CommentDao;
 
 public class QBCWriteController extends SuperClass {
@@ -35,6 +35,11 @@ public class QBCWriteController extends SuperClass {
 		cnt = cdao.addComment(bean);
 		request.setAttribute("bean", bean);
 		
-		new QBDetailViewController().doGet(request, response);
+		JSONObject obj = new JSONObject();
+//		obj.put("like", bean.getLikes_count());
+//		
+		response.setContentType("application/x-json; charset=UTF-8");
+		response.getWriter().print(obj);
+//		new QBDetailViewController().doGet(request, response);
 	}
 }

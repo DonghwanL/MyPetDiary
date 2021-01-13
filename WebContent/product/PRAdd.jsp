@@ -26,9 +26,9 @@
 								<td width="20%">상품 타입</td>
 								<td>
 									<select name="p_type" id="p_type" onmouseup="formCheck()">
-										<option value="all" selected="selected">선택
-										<option value="강아지">강아지
-										<option value="고양이">고양이
+										<option value="ALL" selected="selected">선택
+										<option value="DOG">강아지
+										<option value="CAT">고양이
 									</select> 
 									<span class="error p_type_error"></span>
 								</td>
@@ -38,10 +38,10 @@
 								<td>상품 분류</td>
 								<td>
 									<select name="category" id="category" onmouseup="formCheck()">
-										<option value="all" selected="selected">선택
-										<option value="사료">사료
-										<option value="간식">간식
-										<option value="기타">기타
+										<option value="ALL" selected="selected">선택
+										<option value="신상품">신상품
+										<option value="특가">특가
+										<option value="BEST">BEST
 									</select> 
 									<span class="error category_error"></span>
 									</td>
@@ -58,7 +58,7 @@
 							<tr>
 								<td>상품명</td>
 								<td>
-									<input type="text" class="name" name="name" size="30" onmouseover="formCheck()">
+									<input type="text" class="name" name="name" size="30" onclick="formCheck()">
 									<span class="error name_error"></span>
 								</td>
 							</tr>
@@ -66,7 +66,7 @@
 							<tr>
 								<td>가격</td>
 								<td>
-									<input type="number" class="price" name="price" size="30" onmouseover="formCheck()">
+									<input type="number" class="price" name="price" size="30" onclick="formCheck()">
 									<span class="error price_error"></span>
 								</td>
 							</tr>
@@ -74,7 +74,7 @@
 							<tr>
 								<td>재고</td>
 								<td>
-									<input type="number" class="stock" name="stock" size="30" onmouseover="formCheck()"> 
+									<input type="number" class="stock" name="stock" size="30" onclick="formCheck()"> 
 									<span class="error stock_error"></span>
 								</td>
 							</tr>
@@ -82,7 +82,7 @@
 							<tr>
 								<td>포인트</td>
 								<td>
-									<input type="number" class="p_point" name="p_point" size="30" onmouseover="formCheck()">
+									<input type="number" class="p_point" name="p_point" size="30" onclick="formCheck()">
 									<span class="error point_error"></span>
 								</td>
 							</tr>
@@ -131,18 +131,24 @@ function formCheck() {
 	var content = document.querySelector('.content');
 	var content_error = document.querySelector('.content_error');
 	
-	if (p_type.value == 'all') {
+	if (p_type.value == 'ALL') {
 		p_type_error.innerText = '상품 타입을 선택 해주세요';
 		return false;
 	} 
 	
-	if (category.value == 'all') {
+	if (category.value == 'ALL') {
 		category_error.innerText = '상품 분류를 선택 해주세요';
 		return false;
 	} 
 	
 	if (!imageFile) {
 		alert('이미지 파일을 선택 해주세요');
+		return false;
+	}
+	
+	if (name.value == null || name.value == '') {
+		name_error.innerText = '상품명을 입력 해주세요';
+		form.name.focus();  
 		return false;
 	}
 	
@@ -161,12 +167,6 @@ function formCheck() {
 	if (point.value == null || point.value == '') {
 		point_error.innerText = '포인트를 입력 해주세요';
 		form.point.focus();  
-		return false;
-	}
-	
-	if (name.value == null || name.value == '') {
-		name_error.innerText = '상품명을 입력 해주세요';
-		form.name.focus();  
 		return false;
 	}
 	

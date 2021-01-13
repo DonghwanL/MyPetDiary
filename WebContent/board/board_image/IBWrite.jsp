@@ -55,7 +55,7 @@
 									<div class="write-button-group" align="center">	
 										<button type="submit">글쓰기</button>
 										<button type="reset">취소</button>
-										<input type="button" onclick="moveList()" value="목록">
+										<button type="button" onclick="moveList()">목록</button>
 									</div>
 								</td>
 							</tr>	
@@ -65,6 +65,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="line"></div>
 	
 	<script>
 		function moveList() {

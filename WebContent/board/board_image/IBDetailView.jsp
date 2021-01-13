@@ -56,6 +56,7 @@
 												<form id="like_form">
 													<input type="hidden" name="command" value="LikeUpdate">
 													<input type="hidden" name="no" value="${bean.no}">
+													<input type="hidden" name="image" value="${bean.file_name}">
 													
 													<img src="${pageContext.request.contextPath}/images/thumbs_up.svg" class="like-image" onclick="return likeCount()">
 													<span id="like_result">${bean.likes_count}</span>

@@ -211,6 +211,7 @@ public class ProductDao extends SuperDao {
 				bean.setPrice(rs.getInt("price"));
 				bean.setSell_counts(rs.getInt("sell_counts"));
 				bean.setStock(rs.getInt("stock"));
+				bean.setContent(rs.getString("content"));
 			}
 			
 		} catch (Exception e) {
@@ -463,6 +464,75 @@ public class ProductDao extends SuperDao {
 				pstmt.setInt(2, endRow);
 			}
 			
+			rs = pstmt.executeQuery();	
+			
+			while (rs.next()) {
+				Products bean = new Products();
+				
+				bean.setP_id(rs.getInt("p_id"));
+				bean.setP_type(rs.getString("p_type"));
+				bean.setCategory(rs.getString("category"));
+				bean.setName(rs.getString("name"));
+				bean.setPrice(rs.getInt("price"));
+				bean.setStock(rs.getInt("stock"));
+				bean.setFile_path(rs.getString("file_path"));
+				bean.setFile_name(rs.getString("file_name"));
+				bean.setContent(rs.getString("content"));
+				bean.setP_point(rs.getInt("p_point"));
+				bean.setSell_counts(rs.getInt("sell_counts"));
+				bean.setDiscount_rate(rs.getInt("discount_rate"));
+				bean.setCreated_at(String.valueOf(rs.getString("created_at")));
+
+				lists.add(bean);
+			}
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;			
+			cnt = - err.getErrorCode();			
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) { pstmt.close();}
+				if(conn != null) {conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists;
+	}
+
+	public List<Products> mainProductList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int cnt = -99999;
+		
+		String sql = " select p_id, p_type, category, name, price, stock, file_path, file_name, content, p_point, sell_counts, discount_rate, created_at ";
+		sql += " from ( ";
+		sql += " select p_id, p_type, category, name, price, stock, file_path, file_name, content, p_point, sell_counts, discount_rate, created_at,";
+		sql += " rank() over(order by p_id desc) as ranking ";
+		sql += " from products ";
+		sql += " where category = '특가' ";
+		sql += " ) ";
+
+		List<Products> lists = new ArrayList<Products>();
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+	
 			rs = pstmt.executeQuery();	
 			
 			while (rs.next()) {

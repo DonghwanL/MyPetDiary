@@ -57,7 +57,7 @@
 						<td>${product.p_type}</td>
 						<td>${product.category}</td>
 						<td>${product.name}</td>
-						<td>${product.price}</td>
+						<td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
 						<td>${product.stock}</td>
 						<td>${product.sell_counts}</td>
 						<td>${product.p_point}</td>
@@ -82,7 +82,7 @@
 								<option value="category">분류
 								<option value="name">상품명
 							</select> 
-							<input type="text" class="search_input" name="keyword" id="keyword">&nbsp;&nbsp;
+							<input type="text" class="search_input" name="keyword" id="keyword">&nbsp;
 							<button type="submit">검색</button>&nbsp;
 							<button type="button" onclick="writeForm();">상품 등록</button>&nbsp;
 							<button type="submit" onclick="moveList()">목록</button>

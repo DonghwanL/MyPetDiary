@@ -19,18 +19,18 @@
 /* PRODUCT LIST */
 
 .image-products {
-	width: 650px;
+	width: 700px;
 	height: auto;
 	font-size: 13px;
 }
 
 .image-products td {
-	padding: 20px;
+	padding: 45px;
 }
 
 .image-products img {
-	width: 140px;
-	height: 140px;
+	width: 180px;
+	height: 180px;
 	margin-bottom: 8px;
 	border-radius: 3px;
 }

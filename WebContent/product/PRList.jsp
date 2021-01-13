@@ -23,8 +23,8 @@
 					<!-- filter() Method를 사용 시 각 페이지를 따로 만들 필요없이 한 화면에서 분류가 가능 -->
 					<!-- 필터 인자 값을 한글로 작성 시 페이징 오류가 나므로 반드시 영문으로 입력 ex) all, cat, dog -->
 					<label class="a" onclick="filter('all')">전체</label>&nbsp;&nbsp;&nbsp;
-					<label class="a" onclick="filter('cat')">|&nbsp;&nbsp;&nbsp;고양이</label>&nbsp;&nbsp;&nbsp;
-					<label class="a"onclick="filter('dog')">|&nbsp;&nbsp;&nbsp;강아지</label>
+					<label class="a" onclick="filter('CAT')">|&nbsp;&nbsp;&nbsp;고양이</label>&nbsp;&nbsp;&nbsp;
+					<label class="a"onclick="filter('DOG')">|&nbsp;&nbsp;&nbsp;강아지</label>
 				</td>
 			</tr>
 		</table>	
@@ -42,11 +42,38 @@
 							</a><br>
 							
 							<div class="title">
-								<a href="<%=cp%>/Mypet?command=PRDetailView&name="${shop.name}>
-									상품명 : ${shop.name}
-								</a>
+								<c:if test="${shop.category == ALL}">
+									<a href="<%=cp%>/Mypet?command=PRDetailView&name="${shop.name}>
+										${shop.name}
+									</a>
+								</c:if>
+								
+								<c:if test="${shop.category == '특가'}">
+									<a href="<%=cp%>/Mypet?command=PRDetailView&name="${shop.name}>
+										<span>${shop.name}</span>
+									</a>
+									<button class="small-state-btn-yellow">HIT</button>
+								</c:if>
+								
+								<c:if test="${shop.category == '신상품'}">
+									<a href="<%=cp%>/Mypet?command=PRDetailView&name="${shop.name}>
+										<span>${shop.name}</span>
+									</a>
+									<button class="small-state-btn-green">NEW</button>
+								</c:if>
+								
+								<c:if test="${shop.category == 'BEST'}">
+									<a href="<%=cp%>/Mypet?command=PRDetailView&name="${shop.name}>
+										<span>${shop.name}</span>
+									</a>
+									<button class="small-state-btn-red">BEST</button>
+								</c:if>
 							</div>
-							<div class="price">판매가 : ${shop.price}</div></td>
+							
+							<div class="price">
+								<fmt:formatNumber value="${shop.price}" pattern="#,###" />
+							</div>
+						</td>
 
 						<c:set var="a" value="${a + 1}" />
 						<c:if test="${a == 3}">
@@ -66,7 +93,7 @@
 					<option value="category">분류
 					<option value="name">상품명
 				</select> 
-				<input type="text" class="search_input" name="keyword" id="keyword">&nbsp;&nbsp;
+				<input type="text" class="search_input" name="keyword" id="keyword">&nbsp;
 				<button type="submit">검색</button>&nbsp;
 			</div>
 			

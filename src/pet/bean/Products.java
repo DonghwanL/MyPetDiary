@@ -3,7 +3,7 @@ package pet.bean;
 public class Products {
 	private int p_id; // 상품 ID
 	private String p_type; // 상품 타입 (고양이, 강아지)
-	private String category; // 상품 카테고리 (사료, 간식, 기타)
+	private String category; // 상품 카테고리 (특가, BEST, 신상품)
 	private String name; // 상품명
 	private int price; // 가격
 	private int stock; // 재고량

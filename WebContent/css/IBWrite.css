@@ -103,6 +103,10 @@ textarea::placeholder {
 	font-weight: 500;
 }
 
+.line {
+	margin-bottom: 20px;
+}
+
 /* IMAGE */
 
 input[type=file] {

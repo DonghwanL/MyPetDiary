@@ -37,19 +37,17 @@
        		<div class="main-slide-title" style="text-align:center"><h2>특가&nbsp;상품</h2></div>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-							<c:forEach var="main_p" items="${requestScope.lists}">
-								<a href="<%=cp%>/Mypet?command=IBDetailView&no=${main_p.no}">
-									<img alt="image" src="<%=cp%>/upload/${main_p.file_name}"/>
-								</a>
-								<img src="http://oldmidi.cdn3.cafe24.com/p/0139.jpg">
-							</c:forEach>
-					</div>
-					<div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0318.jpg"></div>
-					<div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0508.jpg"></div>
-					<div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0767.jpg"></div>
-					<div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0164.jpg"></div>
-					<div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0574.jpg"></div>
+					<c:forEach var="main" items="${requestScope.lists}">
+						<div class="swiper-slide">
+							<a href="<%=cp%>/Mypet?command=PRDetailView&p_id=${main.p_id}">
+								<img alt="image" src="<%=cp%>/upload/${main.file_name}" />
+								<span>${main.name} <button class="small-state-btn-yellow">HIT</button></span>
+								<span class="product-price">
+									<fmt:formatNumber value="${main.price }" pattern="#,###" />
+								</span>
+							</a>
+						</div>
+					</c:forEach>
 				</div>
 
 				<!-- 네비게이션 -->
@@ -66,7 +64,7 @@
 	   	new Swiper('.swiper-container', {
 	
 	   		slidesPerView : 3, // 동시에 보여줄 슬라이드 갯수
-	   		spaceBetween : 10, // 슬라이드간 간격
+	   		spaceBetween : 5, // 슬라이드간 간격
 	   		slidesPerGroup : 3, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
 	   		roundLengths: true,
 	

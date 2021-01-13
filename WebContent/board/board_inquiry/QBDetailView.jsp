@@ -86,7 +86,7 @@
 						<tr>
 							<td>
 								<div class="comments-write">	
-									<form id="comments_form" action="<%=YesForm%>" method="POST" onsubmit="return commentCheck()">
+									<form id="comments_form" action="<%=YesForm%>" method="POST" onsubmit="return writeComment()">
 										<input type="hidden" name="command" value="QBCWrite">
 										<input type="hidden" name="no" value="${bean.no}">
 										<input type="hidden" name="comment_writer" value="${sessionScope.loginfo.id}">
@@ -183,8 +183,39 @@
 	}
 	
 	// COMMENT
+	
+	// [등록]
+	
+	function writeComment() {
+		var form = document.getElementById("comments_form");
+		var content = document.querySelector('.comments_content').value;
+		
+		if (content == null || content == "") {
+			alert('내용을 입력 해주세요');
+			form.comments_content.focus();    
+			return false;
+		}
+				
+		$.ajax({
+			url: "/Mypet/Mypet?command=QBCWrite"
+			type: "POST",
+			cache: false,
+			dataType: "json",
+			data: $('#comments_form').serialize(),
+			success: function(data) { // Ajax 통신 성공시 넘어오는 데이터의 이름 : data
+				/* $("#like_result").html(data.like); //ID 값이 like_result인 html을 찾아서 data.like값으로 변경 */
+			},
+		
+			error: function (request, status, error) {
+				alert("Ajax 실패")
+			}
+		});
+	}
 
-	function likeCount(){
+	
+	// LIKE
+
+	function likeCount() {
 		var url = "/Mypet/Mypet?command=LikeUpdate"
 				
 		$.ajax({

@@ -66,6 +66,61 @@ a {
 	color: #333;
 }
 
+.small-state-btn-yellow {
+	width: 25px;
+	text-align: center;
+	font-size: 9px;
+	background-color: #f39c12;
+	border: none;
+	font-weight: 500;
+	border-radius: 3px;
+	color: #fff;
+	padding: 2px;
+	margin-bottom: 3px;
+	vertical-align: middle;
+}
+
+.small-state-btn-green {
+	width: 26px;
+	text-align: center;
+	font-size: 9px;
+	background-color: #27ae60;
+	border: none;
+	font-weight: 500;
+	border-radius: 3px;
+	color: #fff;
+	padding: 3px;
+	margin-bottom: 3px;
+	vertical-align: middle;
+}
+
+.small-state-btn-red {
+	width: 29px;
+	text-align: center;
+	font-size: 9px;
+	background-color: #f53b57;
+	border: none;
+	font-weight: 500;
+	border-radius: 3px;
+	color: #fff;
+	padding: 3px;
+	margin-bottom: 3px;
+	vertical-align: middle;
+}
+
+.small-state-btn-yellow:focus {
+	outline: none;
+}
+
+.small-state-btn-green:focus {
+	outline: none;
+}
+
+.small-state-btn-red:focus {
+	outline: none;
+}
+
+
 /* SECTION & INNER */
 
 .section {
@@ -288,9 +343,11 @@ mark {
 }
 
 .swiper-container {
+	width: 800px;
 	height: 250px;
-	margin-bottom: 50px;
 	background-color: #ecf0f1;
+	margin-bottom: 100px;
+	box-shadow: 1px 2px 2px rgba(1, 1, 1, 0.2);
 }
 
 .swiper-slide {
@@ -300,13 +357,35 @@ mark {
 	justify-content: center; /* 좌우 기준 중앙정렬 */
 }
 
+
 .swiper-slide img {
-	width: 200px;
-	height: 150px;
+	width: 150px;
+	height: 130px;
 	border-radius: 3px;
+	margin-bottom: 10px;
+	margin-top: 5px;
 	max-width: 100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
 }
 
+.swiper-slide img:hover {
+	opacity: 0.8;
+}
+
+.swiper-slide a:hover {
+	color: #333;
+	font-weight: 500;
+}
+
+.swiper-slide span {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 10px;
+}
+
+.product-price {
+	color: #b12603;
+	font-weight: 500;
+}
 
 /* FOOTER */
 

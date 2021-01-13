@@ -116,7 +116,7 @@
                 		</div>
                   
                         <a href="<%=NoForm%>mSignUp" class="sign-up btn--home">회원가입</a>
-                        <a href="#" class="shop-cart">Cart</a>
+                        <a href="<%=NoForm%>CartList" class="shop-cart">Cart</a>
                     </div>
                 </div>
             </div>

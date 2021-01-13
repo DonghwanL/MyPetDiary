@@ -34,18 +34,18 @@
 									<select name="p_type" id="p_type" onmouseup="formCheck()">
 										<option value="all" selected="selected">선택
 										
-										<c:if test="${product.p_type == '강아지'}">
-											<option value="강아지" selected="selected">강아지
+										<c:if test="${product.p_type == 'dog'}">
+											<option value="dog" selected="selected">강아지
 										</c:if>
-										<c:if test="${product.p_type != '강아지'}">
-											<option value="강아지">강아지
+										<c:if test="${product.p_type != 'dog'}">
+											<option value="dog">강아지
 										</c:if>
 										
-										<c:if test="${product.p_type == '고양이'}">
-											<option value="고양이" selected="selected">고양이
+										<c:if test="${product.p_type == 'cat'}">
+											<option value="cat" selected="selected">고양이
 										</c:if>
-										<c:if test="${product.p_type != '고양이'}">
-											<option value="강아지">고양이
+										<c:if test="${product.p_type != 'cat'}">
+											<option value="cat">고양이
 										</c:if>
 										
 									</select> 
@@ -59,25 +59,25 @@
 									<select name="category" id="category" onmouseup="formCheck()">
 										<option value="all" selected="selected">선택
 										
-										<c:if test="${product.category == '사료'}">
-											<option value="사료" selected="selected">사료
+										<c:if test="${product.category == '신상품'}">
+											<option value="신상품" selected="selected">신상품
 										</c:if>	
-										<c:if test="${product.category != '사료'}">
-											<option value="사료">사료
+										<c:if test="${product.category != '신상품'}">
+											<option value="신상품">신상품
 										</c:if>	
 										
-										<c:if test="${product.category == '간식'}">
-											<option value="간식" selected="selected">간식
+										<c:if test="${product.category == '특가'}">
+											<option value="특가" selected="selected">특가
 										</c:if>		
-										<c:if test="${product.category != '간식'}">
-											<option value="간식">간식
+										<c:if test="${product.category != '특가'}">
+											<option value="특가">특가
 										</c:if>	
 										
-										<c:if test="${product.category == '기타'}">
-											<option value="기타" selected="selected">기타
+										<c:if test="${product.category == 'BEST'}">
+											<option value="BEST" selected="selected">BEST
 										</c:if>
 										<c:if test="${product.category != '기타'}">
-											<option value="기타">기타
+											<option value="BEST">BEST
 										</c:if>
 									</select> 
 									<span class="error category_error"></span>
@@ -126,8 +126,7 @@
 							<tr>
 								<td>상품 설명</td>
 								<td>
-									<textarea class="content" name="content" placeholder="상품 설명을 입력해 주세요" onclick="formCheck()">
-									${product.content}
+									<textarea class="content" name="content" placeholder="상품 설명을 입력해 주세요" onclick="formCheck()">&nbsp;${product.content}
 									</textarea>
 									<span class="error content_error"></span>
 								</td>
@@ -184,6 +183,12 @@ function formCheck() {
 		return false;
 	}
 	
+	if (name.value == null || name.value == '') {
+		name_error.innerText = '상품명을 입력 해주세요';
+		form.name.focus();  
+		return false;
+	}
+	
 	if (price.value == null || price.value == '') {
 		price_error.innerText = '가격을 입력 해주세요';
 		form.price.focus();  
@@ -199,12 +204,6 @@ function formCheck() {
 	if (point.value == null || point.value == '') {
 		point_error.innerText = '포인트를 입력 해주세요';
 		form.point.focus();  
-		return false;
-	}
-	
-	if (name.value == null || name.value == '') {
-		name_error.innerText = '상품명을 입력 해주세요';
-		form.name.focus();  
 		return false;
 	}
 	
