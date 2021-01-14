@@ -13,6 +13,7 @@ import pet.bean.Board;
 import pet.bean.Member;
 import pet.common.SuperClass;
 import pet.dao.BoardDao;
+import pet.dao.MemberDao;
 
 public class IBWriteController extends SuperClass {
 	private Board bean = null;
@@ -59,12 +60,27 @@ public class IBWriteController extends SuperClass {
 			bean.setFile_path(savePath); // 파일경로 
 			bean.setContent(content); // 글 내용 
 
-			BoardDao dao = new BoardDao();
+			BoardDao bdao = new BoardDao();
+			MemberDao mdao = new MemberDao();
+			Member member = new Member();
 			int cnt = -999999;
 			
-			cnt = dao.imagePost(bean);
+			cnt = bdao.imagePost(bean);
 
 			super.doGet(request, response);
+			
+			member = (Member)super.session.getAttribute("loginfo");
+			
+			int count = bdao.selectPostCount(member.getId()); 
+
+			if (count >= 10) {
+				// 회원 레벨을 2로 업데이트
+				mdao.userLevelUpdate(member.getId(), 2);
+				
+			} else if (count >= 20) {
+				// 회원 레벨을 3으로 업데이트
+				mdao.userLevelUpdate(member.getId(), 3);
+			}
 
 			new IBListController().doGet(request, response);
 

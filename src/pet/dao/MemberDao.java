@@ -12,6 +12,50 @@ import pet.bean.Member;
 
 public class MemberDao extends SuperDao {
 	
+	public void userLevelUpdate(String id, int level) {
+		String sql = " update member set mlevel = ? ";
+		  sql +=" where id = ? ";
+		  
+		  Connection conn = null;
+		  PreparedStatement pstmt = null;
+		  int cnt = -999999;
+		  
+		  try {
+		   conn = super.getConnection();
+		   pstmt = conn.prepareStatement(sql);
+
+		   pstmt.setInt(1, level);
+		   pstmt.setString(2, id);
+		   
+		   cnt = pstmt.executeUpdate(); 
+		   conn.commit(); 
+		   
+		   System.out.println("DAO : 레벨 업데이트 완료");
+
+		  } catch (Exception e) {
+		   SQLException err = (SQLException)e;   
+		   cnt = - err.getErrorCode();   
+		   e.printStackTrace();
+		   
+		   try {
+		    conn.rollback(); 
+		    
+		   } catch (Exception e2) {
+			   e2.printStackTrace();
+		   }
+		   
+		  } finally {
+			  
+		   try {
+		    if (pstmt != null) {pstmt.close();}
+		    if (conn != null) {conn.close();}
+		    
+		   } catch (Exception e2) {
+		    e2.printStackTrace();
+		   }
+		 }
+	}
+	
 	// ---------------- Sign-Up Section ----------------
 	
 	public int memberSignUp(Member bean) {
@@ -549,9 +593,9 @@ public class MemberDao extends SuperDao {
 		} finally{
 			
 			try {
-				if( rs != null){ rs.close();} 
-				if( pstmt != null){ pstmt.close();} 
-				if(conn != null){conn.close();}
+				if(rs != null) {rs.close();} 
+				if(pstmt != null) {pstmt.close();} 
+				if(conn != null) {conn.close();}
 				
 			} catch (Exception e2) {
 				e2.printStackTrace(); 
@@ -559,5 +603,6 @@ public class MemberDao extends SuperDao {
 		} 	
 		return cnt; 
 	}
+
 
 }

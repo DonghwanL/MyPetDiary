@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pet.bean.Board;
+import pet.bean.Member;
 import pet.common.SuperClass;
 import pet.dao.BoardDao;
+import pet.dao.MemberDao;
 
 public class QBWriteController extends SuperClass {
 	private Board bean = null;
@@ -51,10 +53,25 @@ public class QBWriteController extends SuperClass {
 		
 		System.out.println(bean);
 				
-		BoardDao dao = new BoardDao();			
+		BoardDao bdao = new BoardDao();
+		MemberDao mdao = new MemberDao();
+		Member member = new Member();
 		int cnt = -99999; 		
 
-		cnt = dao.writePost(bean);
+		cnt = bdao.writePost(bean);
+		
+		member = (Member)super.session.getAttribute("loginfo");
+		
+		int count = bdao.selectPostCount(member.getId()); 
+
+		if (count >= 10) {
+			// 회원 레벨을 2로 업데이트
+			mdao.userLevelUpdate(member.getId(), 2);
+			
+		} else if (count >= 20) {
+			// 회원 레벨을 3으로 업데이트
+			mdao.userLevelUpdate(member.getId(), 3);
+		}
 		new QBListController().doGet(request, response);
 	}
 }

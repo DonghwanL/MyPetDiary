@@ -54,9 +54,9 @@ adminPRList=pet.product.adminPRListController
 ## Order Section  ####################################################
 CartHistory=pet.order.CartHistoryController
 CartAdd=pet.order.CartAddController
-#CartDelete=pet.order.CartDeleteController
-#CartModify=pet.order.CartModifyController
+CartDelete=pet.order.CartDeleteController
+CartModify=pet.order.CartModifyController
 CartList=pet.order.CartListController
-#ORDetailView=pet.order.ORDetailViewController
-#ORList=pet.order.ORListController
-ORPay=pet.order.ORPayController
+PRCalculate=pet.order.PRCalculateController
+ORDetailView=pet.order.ORDetailViewController
+ORList=pet.order.ORListController

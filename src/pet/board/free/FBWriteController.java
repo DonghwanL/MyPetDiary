@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pet.bean.Board;
-import pet.board.inquiry.QBListController;
+import pet.bean.Member;
 import pet.common.SuperClass;
 import pet.dao.BoardDao;
+import pet.dao.MemberDao;
 
 public class FBWriteController extends SuperClass {
 private Board bean = null;
@@ -52,10 +53,26 @@ private Board bean = null;
 		
 		System.out.println(bean);
 				
-		BoardDao dao = new BoardDao();			
+		BoardDao bdao = new BoardDao();
+		MemberDao mdao = new MemberDao();
+		Member member = new Member();
 		int cnt = -99999; 		
+		
+		cnt = bdao.writePost(bean);
+		
+		member = (Member)super.session.getAttribute("loginfo");
+		
+		int count = bdao.selectPostCount(member.getId()); 
 
-		cnt = dao.writePost(bean);
+		if (count >= 10) {
+			// 회원 레벨을 2로 업데이트
+			mdao.userLevelUpdate(member.getId(), 2);
+			
+		} else if (count >= 20) {
+			// 회원 레벨을 3으로 업데이트
+			mdao.userLevelUpdate(member.getId(), 3);
+		}
+
 		new FBListController().doGet(request, response);
 	}
 }

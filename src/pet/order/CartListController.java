@@ -25,17 +25,14 @@ public class CartListController extends SuperClass {
 		String message = "";
 		
 		if (super.session.getAttribute("loginfo") == null) {
-			message = "로그인이 필요합니다.";
-			request.setAttribute("message", message);
+			
 			new MemberLoginController().doGet(request, response);	
 			
 		} else {
 			MyCartList mycart = (MyCartList)super.session.getAttribute("mycart");
 			
 			if (mycart == null) {
-				message = "쇼핑 내역이 없습니다. 상품 페이지로 이동 합니다.";
-				request.setAttribute("message", message);
-				 
+				
 				new PRListController().doGet(request, response); 
 			}
 			

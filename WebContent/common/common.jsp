@@ -82,7 +82,7 @@
                             <li class="dropdown-mypage"><a href="#" class="hover-color">My Page</a>
                                 <ul class="dropdown-submenu">
                             		<li><a href="<%=NoForm%>mModify&id=${sessionScope.loginfo.id}">정보 수정</a></li>
-                            		<li><a href="#">주문 조회</a></li>
+                            		<li><a href="<%=NoForm%>ORList&id=${sessionScope.loginfo.id}">주문 조회</a></li>
                             		
                             		<c:if test="${login_type == 1}">
 										<li><a href="<%=NoForm%>mList">관리자 메뉴</a></li>

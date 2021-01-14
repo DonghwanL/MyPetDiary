@@ -10,7 +10,6 @@ public class Orders {
 	private String address2; // 주문자 상세 주소
 	private String order_date; // 주문 일자
 	
-	
 	public int getO_id() {
 		return o_id;
 	}

@@ -1,0 +1,95 @@
+/* COMMON */
+
+.order-list {
+	width: 80%;
+	margin: 0 auto;
+	padding: 50px 50px;
+}
+
+.order-list-title {
+	border-bottom: 1px solid #e0e0eb;
+	padding-bottom: 10px;
+}
+
+.order-list-title h1 {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.order-member-info h2 {
+	font-size: 15px;
+	font-weight: 500;
+	margin-top: 5px;
+	margin-bottom: 25px;
+}
+
+.error {
+	font-size: 13px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+
+/* 주문 정보 */ 
+
+.order-product-list { 
+	border: 1px solid #e0e0eb;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 13px;
+}
+
+.order-product-list th {
+	text-align: center;
+	background-color: #ccc;
+	color: #333;
+	padding: 10px;
+}
+
+
+.order-product-list td {
+	text-align: center;
+	height: 40px; 
+	vertical-align: middle;
+}
+
+
+/* BUTTON */ 
+
+.order-button-group {
+	text-align: center;
+}
+
+.order-product-list a {
+	width: 40px;
+	font-size: 12px;
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	vertical-align: middle;
+	border: none;
+	outline: none;
+	background-color: #2368B7;
+	color: #fff;
+}
+
+.keep-shop-btn {
+	width: 150px;
+	outline: none;
+	border: none;
+	border-radius: 4px;
+	margin-right: 4px;
+	font-size: 15px;
+	font-weight: 0;
+	background-color: #2368B7;
+	color: #fff;
+	padding: 11px 25px;
+	cursor: pointer;
+}
+
+.keep-shop-btn:hover {
+	font-weight: 500;
+}

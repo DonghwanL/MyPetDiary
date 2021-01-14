@@ -55,11 +55,11 @@
 								</td> 
 								
 								<td>
-									<fmt:formatNumber value="${shopinfo.price}" pattern="###,###"/>
+									<fmt:formatNumber value="${shopinfo.price}" pattern="###,###"/>원
 								</td>
 								
 								<td style="width: 80px; width:43px;">
-									${shopinfo.qty}
+									${shopinfo.qty}개
 								</td>
 								
 								<td>
@@ -70,12 +70,12 @@
 		 						
 		 						
 								<td>
-									<fmt:formatNumber value="${shopinfo.qty * shopinfo.price}" pattern="###,###"/>
+									<fmt:formatNumber value="${shopinfo.qty * shopinfo.price}" pattern="###,###"/>원
 								</td>
 								
 								
 								<td class="delete-td">
-									<button class="delete-btn" onclick="deleteCart()">삭제</button>
+									<a class="delete-btn" href="<%=NoForm%>CartDelete&p_id=${shopinfo.p_id}">삭제</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -147,16 +147,13 @@
 		});
 
 	function cartPay() {
-		location.href="<%=NoForm%>CartCalculate";
+		location.href="<%=NoForm%>PRCalculate";
 	}
 	
 	function keepShop() {
 		location.href="<%=NoForm%>PRList";
 	}
 	
-	function deleteCart() {
-		location.href="<%=NoForm%>CartDelete&p_id=${shopinfo.p_id}";
-	}
 </script>
 </body>
 </html>

@@ -12,6 +12,56 @@ import pet.bean.Comment;
 
 public class BoardDao extends SuperDao {
 	
+	public int selectPostCount(String writer) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int cnt = -999999;
+		
+		String sql = " select  count(*) as cnt from boards ";
+		sql += " where writer = ? ";
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setString(1, writer);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) { 
+				cnt = rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			
+			SQLException err = (SQLException)e;					
+			cnt = - err.getErrorCode();
+			e.printStackTrace();
+			
+			try {
+				conn.rollback(); 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				if(conn != null) {conn.close();}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
+	
 	public int imageModify(Board bean) {
 
 		String sql = " update boards set ";

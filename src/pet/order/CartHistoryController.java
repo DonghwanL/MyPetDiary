@@ -41,7 +41,7 @@ public class CartHistoryController extends SuperClass {
 			OrderDao mdao = new OrderDao();
 
 			// lists : 현재 로그인 한 사람의 쇼핑 주문 내역들을 담고 있는 컬렉션(최근 주문 내역이 먼저 나옴)
-			List<Orders> lists = mdao.OrderMall(loginfo.getId());
+			List<Orders> lists = mdao.memberOrderList(loginfo.getId());
 
 			request.setAttribute("lists", lists);
 
