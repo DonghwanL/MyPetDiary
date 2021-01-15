@@ -22,5 +22,15 @@
 			<button type="button" onclick="<%=NoForm%>mLogin" class="btn_createId">로그인</button>
 		</div>
 	</div>
+	
+<script>
+const login = document.querySelector('.btn_createId');
+
+login.addEventListener("click", function(e) {
+	
+	location.href = "<%=NoForm%>mLogin";
+})
+
+</script>
 </body>
 </html>

@@ -339,7 +339,7 @@ mark {
 	font-weight: 500;
 	letter-spacing: -1px;
 	color: #333;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .swiper-container {
@@ -356,7 +356,6 @@ mark {
 	align-items: center; /* 위아래 기준 중앙정렬 */
 	justify-content: center; /* 좌우 기준 중앙정렬 */
 }
-
 
 .swiper-slide img {
 	width: 150px;

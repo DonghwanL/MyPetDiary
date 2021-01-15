@@ -100,7 +100,7 @@
 						<tr>
 							<td width="10%">${user.m_id}</td>
 							<td width="10%">${user.name}</td>
-							<td width="40%">${user.address1}${user.address2}</td>
+							<td width="40%">${user.address1}&nbsp;${user.address2}</td>
 							<td width="20%">${user.phone}</td>
 							<td width="20%">${user.order_date}</td>
 						</tr>

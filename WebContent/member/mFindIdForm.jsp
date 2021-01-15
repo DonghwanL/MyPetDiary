@@ -24,19 +24,21 @@
 						<div class="inp_text">
 							<label for="Name" class="screen_out">이름</label> <input
 								type="text" id="Name" tabindex="2" size="29" name="name"
-								placeholder="고객님의 이름을 입력해주세요"> <span>${errorname}</span>
+								placeholder="고객님의 이름을 입력해주세요"> 
+							<span class="error">${errorname}</span>
 						</div>
 						<div class="inp_text">
 							<label for="Email" class="screen_out">이메일</label> <input
 								type="text" id="Email" size="29" tabindex="5" name="email"
-								placeholder="가입 시 등록하신 이메일 주소를 입력해주세요"> <span>${erroremail}</span>
+								placeholder="가입 시 등록하신 이메일 주소를 입력해주세요"> 
+							<span class="error">${erroremail}</span>
 						</div>
 					</div>
 					<button type="submit" class="btn_find">확&nbsp;인</button>
+					<button type="button" class="page-back" onclick="history.back()">돌아가기</button>
 				</fieldset>
 			</form>
 		</div>
 	</div>
-
 </body>
 </html>

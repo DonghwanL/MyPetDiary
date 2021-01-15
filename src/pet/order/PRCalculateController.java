@@ -38,6 +38,6 @@ public class PRCalculateController extends SuperClass {
 		
 		new ORListController().doGet(request, response);
 		
-		new CartHistoryController().doGet(request, response);
+//		new CartHistoryController().doGet(request, response);
 	}	
 }

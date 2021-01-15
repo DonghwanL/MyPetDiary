@@ -50,7 +50,7 @@ public class MemberLoginController extends SuperClass {
 
 			if(bean == null) {
 				gotopage = "member/mLoginForm.jsp";
-				message = "아이디 혹은 비밀번호가 잘못되었습니다";
+				message = "아이디 혹은 비밀번호가 잘못되었습니다.";
 				
 				request.setAttribute("errmsg", message);
 				super.goToPage(gotopage);

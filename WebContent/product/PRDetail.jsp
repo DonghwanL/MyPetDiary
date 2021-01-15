@@ -80,13 +80,12 @@
 	orderPay.addEventListener("click", function(e) {
 		const qty = document.querySelector('.qty').value;
 		
-		if (!document.querySelector('.qty').value) {
+		if (!qty) {
 			alert('수량을 선택 해주세요');
 			return false;
 		}
 		
-		console.log(qty);
-		location.href = "<%=NoForm%>CartHistory&p_id=${bean.p_id}&qty=qty%>&stock=${bean.stock}";
+		location.href = "<%=NoForm%>CartHistory&p_id=${bean.p_id}&qty=<%=request.getParameter("qty")%>&stock=${bean.stock}";
 	})
 	
 	function qtyCheck() {

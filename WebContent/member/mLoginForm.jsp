@@ -36,31 +36,9 @@
 					</div>
 					<button type="submit" class="btn_login">로그인</button>
 					<button type="button" onclick="location.href='<%=NoForm%>mSignUp'" class="btn_createId">회원가입</button><br><br>
-					<span class="error">${errmsg}</span>
-
- 
-					<!-- 네이버 로그인방식 작업중..... -->
-					<div id="naver_id_login"></div>
-					<script type="text/javascript"
-						src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-						charset="utf-8"></script>
-
-					<script type="text/javascript">
-				var clientId = "5si6o97uGex4BHaNF3Xq";
-				var callbackUrl = "http://localhost:8080/Mypet/member/naverLoginCheck.jsp";
-				var naver_id_login = new naver_id_login(clientId, callbackUrl);
-				var state = naver_id_login.getUniqState();
-				naver_id_login.setButton("white", 3, 40);
-				naver_id_login.setDomain("http://localhost:8080/Mypet/common/main.jsp");
-				naver_id_login.setState(state);
-				naver_id_login.setPopup();
-				naver_id_login.init_naver_id_login();
-		</script>
-					<!-- //// 네이버 로그인방식 작업중..... -->
-
-
+					<span class="error_miss">${errmsg}</span><br><br>
+					
 					<div class="login_append">
-
 						<div class="txt_find"> 
 							<a href="<%=NoForm%>mFindId" class="link_find">아이디</a> / 
 							<a href="<%=NoForm%>mFindPassword" class="link_find">비밀번호 찾기 </a>
@@ -72,6 +50,7 @@
 
 		</div>
 	</div>
-
+	<br><br><br><br>
+	
 </body>
 </html>

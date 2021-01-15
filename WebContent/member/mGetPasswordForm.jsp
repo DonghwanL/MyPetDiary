@@ -20,8 +20,18 @@
 				고객님의 비밀번호 찾기가 완료되었습니다!
 			</p>
 			<p class="info-password">비밀번호 : ${requestScope.password}</p>
-			<button type="button" onclick="<%=NoForm%>mLogin" class="btn_createId">로그인</button>
+			<button type="button" class="btn_createId">로그인</button>
 		</div>
 	</div>
+
+<script>
+const login = document.querySelector('.btn_createId');
+
+login.addEventListener("click", function(e) {
+	
+	location.href = "<%=NoForm%>mLogin";
+})
+
+</script>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class MemberFindPasswordController extends SuperClass {
 		
 		if (this.validate(request) == false) {
 			String gotopage = "";
-			gotopage = "mFindPasswordForm.jsp";
+			gotopage = "member/mFindPasswordForm.jsp";
 			super.goToPage(gotopage);
 			
 		} else {
