@@ -23,7 +23,7 @@
 					</td>
 
 					<td>
-						<a class="product-manager" href="<%=NoForm%>adminProduct">
+						<a class="product-manager" href="<%=NoForm%>adminPRList">
 							상품 관리
 						</a>
 					</td>

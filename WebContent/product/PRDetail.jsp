@@ -85,7 +85,7 @@
 			return false;
 		}
 		
-		location.href = "<%=NoForm%>CartHistory&p_id=${bean.p_id}&qty=<%=request.getParameter("qty")%>&stock=${bean.stock}";
+		location.href = "<%=NoForm%>CartInstantBuy&p_id=${bean.p_id}&qty=" + qty + "&stock=${bean.stock}";
 	})
 	
 	function qtyCheck() {

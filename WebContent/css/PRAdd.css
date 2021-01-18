@@ -66,7 +66,6 @@ input::placeholder {
 
 input[type=text]:focus {
 	outline: none;
-	border: 1px solid #2368B7;
 }
 
 input[type=file] {

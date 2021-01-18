@@ -887,6 +887,7 @@ public class BoardDao extends SuperDao {
 				bean.setWriter(rs.getString("writer"));
 				bean.setFile_path(rs.getString("file_path"));
 				bean.setFile_name(rs.getString("file_name"));
+				bean.setDepth(rs.getInt("depth"));
 				
 				lists.add(bean);
 				

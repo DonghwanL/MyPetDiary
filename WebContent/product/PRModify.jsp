@@ -34,18 +34,18 @@
 									<select name="p_type" id="p_type" onmouseup="formCheck()">
 										<option value="all" selected="selected">선택
 										
-										<c:if test="${product.p_type == 'dog'}">
-											<option value="dog" selected="selected">강아지
+										<c:if test="${product.p_type == 'DOG'}">
+											<option value="DOG" selected="selected">강아지
 										</c:if>
-										<c:if test="${product.p_type != 'dog'}">
-											<option value="dog">강아지
+										<c:if test="${product.p_type != 'DOG'}">
+											<option value="DOG">강아지
 										</c:if>
 										
-										<c:if test="${product.p_type == 'cat'}">
-											<option value="cat" selected="selected">고양이
+										<c:if test="${product.p_type == 'CAT'}">
+											<option value="CAT" selected="selected">고양이
 										</c:if>
-										<c:if test="${product.p_type != 'cat'}">
-											<option value="cat">고양이
+										<c:if test="${product.p_type != 'CAT'}">
+											<option value="CAT">고양이
 										</c:if>
 										
 									</select> 
@@ -102,7 +102,7 @@
 							<tr>
 								<td>가격</td>
 								<td>
-									<input type="number" class="price" name="price" size="30" value="${product.price}" onmouseover="formCheck()">
+									<input type="text" class="price" name="price" size="30" value="${product.price}" onmouseover="formCheck()">
 									<span class="error"></span>
 								</td>
 							</tr>

@@ -66,7 +66,7 @@
 							<tr>
 								<td>가격</td>
 								<td>
-									<input type="number" class="price" name="price" size="30" onclick="formCheck()">
+									<input type="text" class="price" name="price" size="30" onclick="formCheck()">
 									<span class="error price_error"></span>
 								</td>
 							</tr>

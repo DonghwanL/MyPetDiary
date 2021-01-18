@@ -13,6 +13,7 @@ import pet.bean.Member;
 import pet.common.SuperClass;
 import pet.dao.BoardDao;
 import pet.dao.CommentDao;
+import pet.member.MemberLoginController;
 import pet.util.FlowParameters;
 
 public class FBDetailViewController extends SuperClass {
@@ -38,6 +39,10 @@ public class FBDetailViewController extends SuperClass {
 		if (bean != null) { 
 			
 			Member login = (Member)super.session.getAttribute("loginfo");
+			 
+			if (login == null) {
+				new MemberLoginController().doGet(request, response);
+			}
 			
 			if (!bean.getWriter().equals(login.getId())) {
 				dao.updateReadsCount(no);

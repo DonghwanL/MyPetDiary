@@ -32,8 +32,8 @@ public class CartListController extends SuperClass {
 			MyCartList mycart = (MyCartList)super.session.getAttribute("mycart");
 			
 			if (mycart == null) {
-				
-				new PRListController().doGet(request, response); 
+				mycart = new MyCartList(); // 카트 준비
+				super.session.setAttribute("mycart", mycart); 
 			}
 			
 			Map<Integer, Integer> maplists = mycart.GetAllOrderLists();

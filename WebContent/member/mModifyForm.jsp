@@ -161,7 +161,7 @@
 
 					<tr>
 						<td>
-							<p>Point : ${requestScope.bean.mpoint} / 레벨 :	${requestScope.bean.mlevel}&nbsp;</p>
+							<p>Point : ${requestScope.bean.mpoint} / 레벨 :	${requestScope.bean.mlevel}&nbsp;</p><br><br>
 						</td>
 					</tr>
 
@@ -170,6 +170,7 @@
 							<button type="submit" onclick="return modifyCheck()">정보 수정</button>&nbsp;&nbsp; 
 							<a href="#" onclick="dropCheck()"> 회원 탈퇴</a>&nbsp;&nbsp;
 							<button type="reset">취&nbsp;&nbsp;소</button>
+							<br><br><br>
 						</td>
 					</tr>
 				</tbody>
